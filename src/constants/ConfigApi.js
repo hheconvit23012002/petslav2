@@ -1,0 +1,1 @@
+export const API_URL_GETITEM = "https://petsla-api.herokuapp.com/products/?format"
