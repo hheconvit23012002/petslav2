@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 function Menu() {
     return (
         <div>
@@ -17,9 +18,9 @@ function Menu() {
                             </div>
                         </div>
                         <div className="header_logo-tablet">
-                            <a href="/#" className="header_logo-link">
-                                <img src="https://www.leoasher.dev/static/media/logofull.f2aa3784.png" alt="" className="logo_img"/>
-                            </a>
+                            <Link to="" className="header_logo-link">
+                                <img src="/static/media/logofull.f2aa3784.png" alt="" className="logo_img"/>
+                            </Link>
                         </div>
                         <div className="header_settings">
                             <div className="settings-language">
@@ -29,7 +30,12 @@ function Menu() {
                                 <i className="bi bi-moon"></i>
                             </div>
                             <div className="setting-check-log">
-                                <i className="bi bi-box-arrow-in-left"></i>
+                                
+                                <Link to="login">
+                                    <i className="bi bi-box-arrow-in-left">
+                                        
+                                    </i>
+                                </Link>
                             </div>
                         </div>
                     </div>

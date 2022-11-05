@@ -11,6 +11,7 @@ function ProductList(props) {
     let res = []
     let ArrNumPage = []
     function start(){
+        
         let NumberPage = Math.ceil(props.task.length/productOnPage)
         for(let i=1;i<=NumberPage;i++){
             ArrNumPage.push(i)
@@ -19,6 +20,7 @@ function ProductList(props) {
     }
     start()
     const handleChangePage = (value) => {
+        console.log(sessionStorage.token)
         setPageCurent(() => {return value})
     }
     const handleChangeProduct = (e) => {
