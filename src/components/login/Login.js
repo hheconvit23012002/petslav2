@@ -10,14 +10,18 @@ function Login(props) {
     const navigate = useNavigate();
     const [inputUserName, setInputUsername] = useState("")
     const [inputPassWord, setInputPassWord] = useState("")
+    const [isLoading,setLoading] = useState(false)
     const MySwal = withReactContent(Swal)
     async function HandlerSubmit(e) {
         e.preventDefault();
         let user = {
             username: inputUserName,
             password: inputPassWord
+            
         }
+        setLoading(true)
         ApiCaller('/login/', 'POST', user).then(res => {
+            setLoading(false)
             props.onLogin(res.data.token)
             props.onCHangeStatus(true)
             setInputUsername("")
@@ -30,7 +34,7 @@ function Login(props) {
             navigate("/")
         })
             .catch(err => {
-                
+                setLoading(false)
                 MySwal.fire({
                     title: <strong>Tài khoản mật khẩu không chính xác!</strong>,
                     html: <i>You clicked the button!</i>,
@@ -61,15 +65,15 @@ function Login(props) {
                     <input type="password" name="password" className="password" placeholder=" Mật khẩu" value={inputPassWord} onChange={(e) => onChange(e)}></input>
                     <br></br>
                     <div className="cover_button_submit">
-                        {/* <div className="spinner-container"  >
+                        {isLoading ? <div className="spinner-container"  >
                             <div className="loading-spinner">
                             </div>
-                        </div> */}
+                        </div> :
                         <button className="sumbit">
                             <div className="text-submit">
                                 Đăng nhập
                             </div>
-                        </button>
+                        </button>}
                     </div>
                 </div>
             </div>
