@@ -12,7 +12,8 @@ var myReducers = (state = initialState,action) =>{
             for ( var i = 0; i < charactersLength; i++ ) {
                 sait += characters.charAt(Math.floor(Math.random() * charactersLength));
             }
-            document.cookie = state + sait
+            let res = state + sait
+            sessionStorage.setItem("token",res)
             return sait
         default : return state
     }

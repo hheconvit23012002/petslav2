@@ -30,4 +30,11 @@ export const saveLogin = (token) => {
         token
     }
 }
+export const changeStatus = (status) => {
+    return {
+        type: types.STATUS,
+        status
+    }
+}
+
 // cong viec tiep la tao redux login call api login

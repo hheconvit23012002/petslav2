@@ -1,6 +1,14 @@
 import React from "react";
-import { Link } from 'react-router-dom'
-function Menu() {
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from './../../action/index'
+function Menu(props) {
+    
+    function handleLogout(e){
+        sessionStorage.removeItem("token")
+        let tmp = false;
+        props.onChangeStatus(tmp)
+    }
     return (
         <div>
             <div className="cover-header-top" id="test">
@@ -19,7 +27,7 @@ function Menu() {
                         </div>
                         <div className="header_logo-tablet">
                             <Link to="" className="header_logo-link">
-                                <img src="/static/media/logofull.f2aa3784.png" alt="" className="logo_img"/>
+                                <img src="/static/media/logofull.f2aa3784.png" alt="" className="logo_img" />
                             </Link>
                         </div>
                         <div className="header_settings">
@@ -30,12 +38,15 @@ function Menu() {
                                 <i className="bi bi-moon"></i>
                             </div>
                             <div className="setting-check-log">
-                                
-                                <Link to="login">
-                                    <i className="bi bi-box-arrow-in-left">
-                                        
-                                    </i>
-                                </Link>
+                                {
+                                    props.status ? <Link to="/#" onClick={(e) => handleLogout(e)}>
+                                        <i className="bi bi-box-arrow-right"></i>
+                                    </Link> :
+                                        <Link to="login">
+                                            <i className="bi bi-box-arrow-in-left">
+                                            </i>
+                                        </Link>
+                                }
                             </div>
                         </div>
                     </div>
@@ -46,17 +57,17 @@ function Menu() {
                     <div className="header_width-search">
                         <div className="header_logo">
                             <a href="/#" className="header_logo-link">
-                                <img src="https://www.leoasher.dev/static/media/logofull.f2aa3784.png" alt="" className="logo_img"/>
+                                <img src="https://www.leoasher.dev/static/media/logofull.f2aa3784.png" alt="" className="logo_img" />
                             </a>
                         </div>
                         <div className="header_input-search">
                             <form >
                                 <div className="cover-input">
                                     <input type="text" name="" className="input"
-                                        placeholder="Everything here is better than your ex"/>
-                                        <button className="search-btn">
-                                            <i className="bi bi-search"></i>
-                                        </button>
+                                        placeholder="Everything here is better than your ex" />
+                                    <button className="search-btn">
+                                        <i className="bi bi-search"></i>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -94,4 +105,16 @@ function Menu() {
         </div>
     )
 }
-export default Menu
+const mapStateToProps = (state) => {
+    return {
+        status: state.status,
+    }
+}
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        onChangeStatus: (status) => {
+            dispatch(actions.changeStatus(status))
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Menu)

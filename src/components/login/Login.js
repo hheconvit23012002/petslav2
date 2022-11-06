@@ -4,23 +4,22 @@ import { useNavigate } from "react-router-dom";
 import * as actions from './../../action/index';
 import ApiCaller from "./../../utills/ApiCaller";
 import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content'
-function Login(props){
+import withReactContent from 'sweetalert2-react-content';
+import './login.css';
+function Login(props) {
     const navigate = useNavigate();
-    const [inputUserName,setInputUsername] = useState("")
-    const [inputPassWord,setInputPassWord] = useState("")
+    const [inputUserName, setInputUsername] = useState("")
+    const [inputPassWord, setInputPassWord] = useState("")
     const MySwal = withReactContent(Swal)
-    function HandlerSubmit(e){
+    async function HandlerSubmit(e) {
         e.preventDefault();
-        
         let user = {
             username: inputUserName,
             password: inputPassWord
         }
-        
-        ApiCaller('/login/','POST',user).then(res => {
+        ApiCaller('/login/', 'POST', user).then(res => {
             props.onLogin(res.data.token)
-        }).then(res => {
+            props.onCHangeStatus(true)
             setInputUsername("")
             setInputPassWord("")
             MySwal.fire({
@@ -28,50 +27,68 @@ function Login(props){
                 html: <i>You clicked the button!</i>,
                 icon: 'success'
             })
-        }).then(e => {
             navigate("/")
         })
-        .catch(err => {
-            MySwal.fire({
-                title: <strong>Tài khoản mật khẩu không chính xác!</strong>,
-                html: <i>You clicked the button!</i>,
-                icon: 'error'
+            .catch(err => {
+                
+                MySwal.fire({
+                    title: <strong>Tài khoản mật khẩu không chính xác!</strong>,
+                    html: <i>You clicked the button!</i>,
+                    icon: 'error'
+                })
             })
-        })
-            
-      
-        
     }
-    function onChange(e){
-        if(e.target.name === "username"){
+    function onChange(e) {
+        if (e.target.name === "username") {
             setInputUsername(e.target.value)
-        }else{
+        } else {
             setInputPassWord(e.target.value)
         }
     }
     return (
+
         <form onSubmit={(e) => HandlerSubmit(e)}>
-           
-            Tài khoản 
-            <input tyoe="text" name="username" className="username" value={inputUserName} onChange={(e) => onChange(e)}></input>
-            <br></br>
-            Mật khẩu
-            <input type="password" name="password" className="password" value={inputPassWord} onChange={(e) => onChange(e)}></input>
-            <br></br>
-            <button>Đăng nhập</button>
+
+            <div className="login-background">
+
+                <div className="login-khung">
+                    <div className="label-login"> Đăng nhập </div>
+                    <br></br>
+                    {/* Tài khoản  */}
+                    <input type="text" name="username" className="username" placeholder=" Tên tài khoản" value={inputUserName} onChange={(e) => onChange(e)}></input>
+                    <br></br>
+                    {/* Mật khẩu */}
+                    <input type="password" name="password" className="password" placeholder=" Mật khẩu" value={inputPassWord} onChange={(e) => onChange(e)}></input>
+                    <br></br>
+                    <div className="cover_button_submit">
+                        {/* <div className="spinner-container"  >
+                            <div className="loading-spinner">
+                            </div>
+                        </div> */}
+                        <button className="sumbit">
+                            <div className="text-submit">
+                                Đăng nhập
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </form>
     )
 }
 const mapStateToProps = (state) => {
     return {
-        
+
     }
 }
-const mapDispatchToProps = (dispatch,props) => {
+const mapDispatchToProps = (dispatch, props) => {
     return {
-        onLogin : (token) => {
+        onLogin: (token) => {
             dispatch(actions.saveLogin(token))
+        },
+        onCHangeStatus : (status) => {
+            dispatch(actions.changeStatus(status))
         }
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

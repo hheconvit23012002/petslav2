@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 function ProductItem(props) {
     const { id,img, name, price } = props
     function converToVND(value) {
@@ -10,14 +11,14 @@ function ProductItem(props) {
     return (
         <div className="l-3 m-4 c-6 col pd" data-id={id}>
             <div className="product-item">
-                <a href="./cart.html" className="product-item-link">
+                <Link to={`product=${id}`} className="product-item-link">
                     <div className="product-item-img" style={{backgroundImage:`url(http://petsla-api.herokuapp.com${img})`}}></div>
-                </a>
+                </Link>
                 <div className="product-info">
                     <div className="product-info-text">
-                        <a href="/#" className="product-text-link">
+                        <Link to={`product=${id}`} className="product-text-link">
                             <span className="product-title">{name}</span>
-                        </a>
+                        </Link>
                         <div className="product-price">{converted}</div>
                     </div>
                     <div className="product-buy">
