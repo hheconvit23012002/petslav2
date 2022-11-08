@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as actions from './../../action/index';
 import ApiCaller from "./../../utills/ApiCaller";
 import Swal from 'sweetalert2';
@@ -64,6 +64,7 @@ function Login(props) {
                     {/* Mật khẩu */}
                     <input type="password" name="password" className="password" placeholder=" Mật khẩu" value={inputPassWord} onChange={(e) => onChange(e)}></input>
                     <br></br>
+                    <Link to="/signup" className="link-to-signup">Nếu bạn chưa có tài khoản hãy đăng ký</Link>
                     <div className="cover_button_submit">
                         {isLoading ? <div className="spinner-container"  >
                             <div className="loading-spinner">
