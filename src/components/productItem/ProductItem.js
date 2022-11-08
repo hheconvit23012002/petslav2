@@ -12,7 +12,7 @@ function ProductItem(props) {
         <div className="l-3 m-4 c-6 col pd" data-id={id}>
             <div className="product-item">
                 <Link to={`product=${id}`} className="product-item-link">
-                    <div className="product-item-img" style={{backgroundImage:`url(http://petsla-api.herokuapp.com${img})`}}></div>
+                    <div className="product-item-img" style={{backgroundImage:`url(http://52.184.86.190${img})`}}></div>
                 </Link>
                 <div className="product-info">
                     <div className="product-info-text">
