@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ApiCaller from "./../../utills/ApiCaller";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { Link } from "react-router-dom";
+import './signup.css';
 function Signup(){
     const [ipFirstname,setIpFirstName] = useState("")
     const [ipLastName,setIpLasttName] = useState("")
@@ -39,33 +41,45 @@ function Signup(){
     }
     function onChange(e){
        
-        if(e.target.name === "firstName"){
+        if(e.target.className === "firstNameSignup"){
             setIpFirstName(e.target.value)
         }
-        else if(e.target.name === "lastName"){
+        else if(e.target.className === "lastNameSignup"){
             setIpLasttName(e.target.value)
-        }else if(e.target.name === "email"){
+        }else if(e.target.className === "emailSignup"){
             setIpEmail(e.target.value)
-        }else if(e.target.name === "username"){
+        }else if(e.target.className === "usernameSignup"){
             setIpUserName(e.target.value)
-        }else if(e.target.name === "password"){
+        }else if(e.target.className === "passwordSignup"){
             setIpPass(e.target.value)
         }
     }
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <input type="text" name="firstName" placeholder="firstName" required value={ipFirstname} onChange={ (e) => onChange(e)}></input>
-                <br></br>
-                <input type="text" name="lastName" placeholder="lastName" required value={ipLastName} onChange={ (e) => onChange(e)}></input>
-                <br></br>
-                <input type="email" name="email" placeholder="email" required value={ipEmail} onChange={ (e) => onChange(e)}></input>
-                <br></br>
-                <input type="text" name="username" placeholder="username" required value={ipUserName} onChange={ (e) => onChange(e)}></input>
-                <br></br>
-                <input type="password" name="password" placeholder="password" required value={ipPass} onChange={ (e) => onChange(e)}></input>
-                <br></br>
-                <button>Đăng ký</button>
+            <div className="signup-background">
+                <div className="signup-khung">
+                    <input type="text" className="firstNameSignup" placeholder="firstName" required value={ipFirstname} onChange={ (e) => onChange(e)}></input>
+                    <br></br>
+                    <input type="text" className="lastNameSignup" placeholder="lastName" required value={ipLastName} onChange={ (e) => onChange(e)}></input>
+                    <br></br>
+                    <input type="email" className="emailSignup" placeholder="email" required value={ipEmail} onChange={ (e) => onChange(e)}></input>
+                    <br></br>
+                    <input type="text" className="usernameSignup" placeholder="username" required value={ipUserName} onChange={ (e) => onChange(e)}></input>
+                    <br></br>
+                    <input type="password" className="passwordSignup" placeholder="password" required value={ipPass} onChange={ (e) => onChange(e)}></input>
+                    <br></br>
+                    <button className="signup-sumbit">
+                        <div className="signup-text">
+                                Đăng kí
+                         </div>
+                    </button>
+                    <br></br>
+                    <Link to="/login" className="link-to-login">
+                        <div className="link-login"> Đăng nhập  </div>
+                    </Link> 
+                </div>
+            </div>
             </form>
         </div>
     )

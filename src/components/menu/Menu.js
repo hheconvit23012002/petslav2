@@ -45,8 +45,8 @@ function Menu(props) {
                                         <i className="bi bi-box-arrow-right"></i>
                                     </Link> :
                                         <Link to="login">
-                                            <i className="bi bi-box-arrow-in-left">
-                                            </i>
+                                             <i className="bi bi-box-arrow-in-left">
+                                           </i>
                                         </Link>
                                 }
                             </div>
