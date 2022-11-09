@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux';
-import * as actions from './../../action/index'
-import "./account.css"
+import * as actions from './../../action/index';
+import './account.css';
 function Account(props) {
     props.onGetToken();
     useEffect(() => {
@@ -13,15 +13,30 @@ function Account(props) {
         <div>
             {
                 sessionStorage.getItem("token") && sessionStorage.getItem("sait") != null ?
-                    <div>
-                        fullName
-                        <div>{props.profile.name}</div>
-                        email
-                        <div>{props.profile.email}</div>
-                        username
-                        <div>{props.profile.username}</div>
+                    <div className="account-background">
+                        <div className="acc-khung">
+                        <div className="label-acc">
+                        <i class="bi bi-person-fill acc-icon">  </i>
+                            My profile
+                        </div>
+                        <div className="acc-fullname">
+                            <div className="acc-fullname-label"> fullName: </div>
+                            <div className="acc-fullname-text">{props.profile.name}</div>
+                        </div>
+                        <br></br>
+                        <div className="acc-fullname">
+                            <div className="acc-fullname-label"> email: </div>
+                            <div className="acc-fullname-text">{props.profile.email}</div>
+                        </div>
+                        <br></br>
+                        <div className="acc-fullname">
+                            <div className="acc-fullname-label"> username: </div>
+                            <div className="acc-fullname-text">{props.profile.username}</div>
+                        </div>
+                        <br></br>
+                        </div>
                     </div> :
-                    <h1>Đăng nhập đi</h1>
+                    window.location.href = './login'
             }
         </div>
     )
