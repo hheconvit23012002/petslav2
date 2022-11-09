@@ -64,7 +64,6 @@ function Login(props) {
                     {/* Mật khẩu */}
                     <input type="password" name="password" className="password" placeholder=" Mật khẩu" value={inputPassWord} onChange={(e) => onChange(e)}></input>
                     <br></br>
-                    <Link to="/signup" className="link-to-signup">Nếu bạn chưa có tài khoản hãy đăng ký</Link>
                     <div className="cover_button_submit">
                         {isLoading ? <div className="spinner-container"  >
                             <div className="loading-spinner">
@@ -76,6 +75,10 @@ function Login(props) {
                             </div>
                         </button>}
                     </div>
+                    <br></br>
+                    <Link to="/signup" className="link-to-signup">
+                        <div className="sigup"> Đăng ký ?  </div>
+                    </Link>   
                 </div>
             </div>
         </form>

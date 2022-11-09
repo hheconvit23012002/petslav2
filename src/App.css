@@ -95,7 +95,7 @@ html{
    line-height: 2.4rem;
    font-weight: 400;
    border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 .input:focus{
   border-color: #86b7fe;
