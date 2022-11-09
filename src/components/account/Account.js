@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import * as actions from './../../action/index'
+import "./account.css"
 function Account(props) {
     props.onGetToken();
     useEffect(() => {
