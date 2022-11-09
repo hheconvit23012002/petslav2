@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './../../action/index'
 function Menu(props) {
-    
-    function handleLogout(e){
+
+    function handleLogout(e){   
         sessionStorage.removeItem("token")
+        sessionStorage.removeItem("sait")
+        props.onDeleteToken()
         let tmp = false;
         props.onChangeStatus(tmp)
     }
@@ -88,7 +90,7 @@ function Menu(props) {
                             <a href="/#" className="nav-item-link">title.homepage</a>
                         </li>
                         <li className="nav-item">
-                            <a href="/#" className="nav-item-link" >title.shop</a>
+                            <Link to="/#" className="nav-item-link" >title.shop</Link>
                         </li>
                         <li className="nav-item">
                             <a href="/#" className="nav-item-link">title.cart</a>
@@ -97,7 +99,7 @@ function Menu(props) {
                             <a href="/#" className="nav-item-link">title.contact</a>
                         </li>
                         <li className="nav-item">
-                            <a href="/#" className="nav-item-link">title.account</a>
+                            <Link to="/account" className="nav-item-link">title.account</Link>
                         </li>
                     </ul>
                 </div>
@@ -114,6 +116,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         onChangeStatus: (status) => {
             dispatch(actions.changeStatus(status))
+        },
+        onDeleteToken: () => {
+            dispatch(actions.deleteToken())
         }
     }
 }
