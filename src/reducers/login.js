@@ -13,7 +13,9 @@ var myReducers = (state = initialState,action) =>{
                 sait += characters.charAt(Math.floor(Math.random() * charactersLength));
             }
             let res = state + sait
-            sessionStorage.setItem("token",res)
+            let sv = btoa(res)
+            sessionStorage.setItem("token",sv)
+            sessionStorage.setItem("sait",sait)
             return sait
         default : return state
     }

@@ -1,11 +1,15 @@
 import { combineReducers } from "redux";
 import task from "./task"
-import customer from "./customer"
+import login from "./login"
 import status from "./status"
+import profile from "./profile"
+import token from "./token"
 const myReducers = combineReducers({
     task,
-    customer,
-    status
+    login,
+    status,
+    profile,
+    token
 })
 
 export default myReducers
