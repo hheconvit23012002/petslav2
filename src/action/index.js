@@ -62,6 +62,22 @@ export const deleteToken = () => {
         type: types.DELETE_TOKEN
     }
 }
-// cong viec tiep la tao redux login call api login
+export const addToCart = (data) => {
+    return {
+        type:types.ADD_TO_CART,
+        data
+    }
+}
+export const updateCart = (id,typeUpdate) => {
+    return {
+        type: types.UPDATE_CART,
+        id,
+        typeUpdate
+    }
+}
 
-
+// export const CallApiOrder = (data,token) => {
+//     return dispatch => {
+//         return ApiCallerHeader("/add-order/",'POST',data,token)
+//     }
+// }

@@ -27,7 +27,7 @@
 
 .buy-in-cart-btn {
     margin: 1rem 1rem 1rem 0;
-
+    cursor: pointer;
     border: 1px solid #e69646;
     background-color: var(--white-color);
     color: #e69646;
@@ -48,6 +48,7 @@
     width: 12.2rem;
     line-height: 2.16rem;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .product-desc {

@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import AccountPage from "./pages/AccountPage/AccountPage";
+import CartPage from "./pages/CartPage/CartPage";
 const routes = [
     {
         id:1,
@@ -35,6 +36,16 @@ const routes = [
         id: 6,
         path:"account",
         main: () => <AccountPage />
+    },
+    {
+        id:7,
+        path:"cart",
+        main: () => <CartPage/>
+    },
+    {
+        id:8,
+        path:"receiver-info",
+        main: () => <CartPage/>
     }
 ]
 

@@ -16,7 +16,7 @@ function Account(props) {
                     <div className="account-background">
                         <div className="acc-khung">
                         <div className="label-acc">
-                        <i class="bi bi-person-fill acc-icon">  </i>
+                        <i className="bi bi-person-fill acc-icon">  </i>
                             My profile
                         </div>
                         <div className="acc-fullname">
@@ -36,7 +36,7 @@ function Account(props) {
                         <br></br>
                         </div>
                     </div> :
-                    window.location.href = './login'
+                    window.location.href = "./login"
             }
         </div>
     )

@@ -74,11 +74,11 @@ function Menu(props) {
                             </form>
                         </div>
                         <div className="header_cart">
-                            <div className="cover-cart">
+                            <Link to="/cart" className="cover-cart">
                                 <i className="bi bi-cart3"></i>
                                 <div className="text-has-hover">title.cart</div>
-                                <span className="number_cart">0</span>
-                            </div>
+                                <span className="number_cart">{props.cart.length}</span>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ function Menu(props) {
                             <Link to="/#" className="nav-item-link" >title.shop</Link>
                         </li>
                         <li className="nav-item">
-                            <a href="/#" className="nav-item-link">title.cart</a>
+                            <Link to="/cart" className="nav-item-link">title.cart</Link>
                         </li>
                         <li className="nav-item">
                             <a href="/#" className="nav-item-link">title.contact</a>
@@ -110,6 +110,7 @@ function Menu(props) {
 const mapStateToProps = (state) => {
     return {
         status: state.status,
+        cart: state.cart
     }
 }
 const mapDispatchToProps = (dispatch, props) => {
