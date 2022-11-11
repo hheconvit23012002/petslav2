@@ -14,7 +14,10 @@ function ProductDetailcpm(props) {
             item = element;
         }
     });
- 
+
+    function handleAdd(e,items){
+        props.onAddToCart(items)
+    }
     function converToVND(value) {
         var test1 = value.toString();
         var x = test1.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
@@ -35,7 +38,7 @@ function ProductDetailcpm(props) {
                         </div>
                         <div className="btn-wrap">
                             <button className="buy-in-cart-btn">Buy Now</button>
-                            <button className="add-in-cart-btn">Add to Cart</button>
+                            <button className="add-in-cart-btn" onClick={e => handleAdd(e,item)}>Add to Cart</button>
                         </div>
                         <div className="product-desc">
                             <h3 className="title-desc">Thông tin sản phẩm</h3>
@@ -57,6 +60,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         onCallApiFetchData: () => {
             dispatch(actions.callApiGetItem())
+        },
+        onAddToCart : (data) => {
+            dispatch(actions.addToCart(data))
         }
     }
 }

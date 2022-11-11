@@ -23,6 +23,7 @@ function Login(props) {
         ApiCaller('/login/', 'POST', user).then(res => {
             setLoading(false)
             props.onLogin(res.data.token)
+            localStorage.setItem("name",JSON.stringify(res.data.name))
             props.onCHangeStatus(true)
             setInputUsername("")
             setInputPassWord("")
