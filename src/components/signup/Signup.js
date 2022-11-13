@@ -10,34 +10,47 @@ function Signup(){
     const [ipEmail,setIpEmail] = useState("")
     const [ipUserName,setIpUserName] = useState("")
     const [ipPass,setIpPass] = useState("")
+    const [isLoading, setLoading] = useState(false)
     const MySwal = withReactContent(Swal)
     function handleSubmit(e){
         e.preventDefault()
-        let res = {
-            first_name: ipFirstname,
-            last_name: ipLastName,
-            email: ipEmail,
-            username: ipUserName,
-            password: ipPass
-        }
-        ApiCaller("/register/",'POST',res).then(e => {
-            setIpFirstName("")
-            setIpLasttName("")
-            setIpPass("")
-            setIpEmail("")
-            setIpUserName("")
+        if(ipFirstname === "" || ipLastName==="" || ipEmail==="" || ipUserName==="" || ipPass===""){
             MySwal.fire({
-                title: <strong>Thành Công!</strong>,
-                html: <i>You clicked the button!</i>,
-                icon: 'success'
-            })
-        }).catch(e => {
-            MySwal.fire({
-                title: <strong>Lỗi không đăng ký được!</strong>,
+                title: <strong>Vui lòng nhập hết các trường!</strong>,
                 html: <i>You clicked the button!</i>,
                 icon: 'error'
             })
-        })
+        }
+        else{
+            let res = {
+                first_name: ipFirstname,
+                last_name: ipLastName,
+                email: ipEmail,
+                username: ipUserName,
+                password: ipPass
+            }
+            setLoading(true)
+            ApiCaller("/register/",'POST',res).then(e => {
+                setLoading(false)
+                setIpFirstName("")
+                setIpLasttName("")
+                setIpPass("")
+                setIpEmail("")
+                setIpUserName("")
+                MySwal.fire({
+                    title: <strong>Thành Công!</strong>,
+                    html: <i>You clicked the button!</i>,
+                    icon: 'success'
+                })
+            }).catch(e => {
+                setLoading(false)
+                MySwal.fire({
+                    title: <strong>Lỗi không đăng ký được!</strong>,
+                    html: <i>You clicked the button!</i>,
+                    icon: 'error'
+                })
+            })
+        }
     }
     function onChange(e){
        
@@ -69,11 +82,22 @@ function Signup(){
                     <br></br>
                     <input type="password" className="passwordSignup" placeholder="password" required value={ipPass} onChange={ (e) => onChange(e)}></input>
                     <br></br>
-                    <button className="signup-sumbit">
+                    {/* <button className="signup-sumbit">
                         <div className="signup-text">
                                 Đăng kí
                          </div>
-                    </button>
+                    </button> */}
+                    <div>
+                    {isLoading ? <div className="spinner-container"  >
+                            <div className="loading-spinner">
+                            </div>
+                        </div> :
+                            <button className="sumbit">
+                                <div className="text-submit">
+                                    Đăng nhập
+                                </div>
+                            </button>}
+                    </div>
                     <br></br>
                     <Link to="/login" className="link-to-login">
                         <div className="link-login"> Đăng nhập  </div>
