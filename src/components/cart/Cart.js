@@ -13,8 +13,13 @@ function Cart(props) {
     function handleChangeQuantity(id,type) {
         props.onUpdateQuantity(id, type)
     }
-    function handlePay(){ 
-        props.setPageCurrent(false)
+    function handlePay(e){ 
+        if(sessionStorage.getItem("token")=== null){
+            e.preventDefault()
+            alert("đăng nhập đi")
+        }else{
+            props.setPageCurrent(false)
+        }
     }
     return (
         props.listItem.length ?
@@ -60,7 +65,7 @@ function Cart(props) {
                 </table>
                 <div>
                     <div>Tổng tiền : {converToVND(sumprice)}</div>
-                    <Link to="/receiver-info" onClick={() => handlePay()}>Tiếp tục</Link>
+                    <Link to="/receiver-info" onClick={(e) => handlePay(e)}>Tiếp tục</Link>
                 </div>
             </div> :
             <div>Giở hàng trống</div>

@@ -7,6 +7,9 @@ import {connect} from "react-redux";
 import * as actions from "./../../action/index";
 import ApiCallerHeader from "./../../utills/CallApiGetProfile";
 function ReceiverInfo(props) {
+    if(sessionStorage.getItem("token") === null){
+        window.location.href  = "/cart"
+    }
     props.onGetToken();
     let name = JSON.parse(localStorage.getItem("name"))
     const [ipName,setIpName] = useState(name)
@@ -17,7 +20,7 @@ function ReceiverInfo(props) {
     
     function handleSubmit(e){
         e.preventDefault()
-        if(ipName !=="" && ipAddress !== "" && ipNote !=="" && ipPhone!== ""){
+        if(ipName !=="" && ipAddress !== "" && ipNote !=="" && ipPhone!== "" && sessionStorage.getItem("token") !== null){
             let sum=0
             let listItem = JSON.parse(localStorage.getItem("cart")).map(x => {
                 sum+=(x.price * x.quantity)
