@@ -13,7 +13,11 @@ function CartPage(){
         }
     },[])
     function onChangePageCart(e,type){
-        setPageCurrent(type)
+        if(type === false && sessionStorage.getItem("token")=== null){
+            alert("đăng nhập đi")
+        }else{
+            setPageCurrent(type)
+        }
     }
     return (
         <div>
