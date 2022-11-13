@@ -23,11 +23,16 @@ let myReducers = (state = initialState,action) => {
             let item = state.find(x => {
                 return id === x.id
             })
-            console.log(type)
             if(type === "incre"){
                 item.quantity +=1
             }else if(type === "decre"){
-                item.quantity -=1
+                if(item.quantity > 1){
+                    item.quantity -=1
+                }else{
+                    state = state.filter(x => {
+                        return x.id !== id
+                    })
+                }
             }else{
                 state = state.filter(x => {
                     return x.id !== id
