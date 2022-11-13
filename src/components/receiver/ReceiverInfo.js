@@ -38,6 +38,7 @@ function ReceiverInfo(props) {
                 orderItems: listItem
             }
             return ApiCallerHeader("/add-order/",'POST',dataRequest,props.token).then(() => {
+                
                 MySwal.fire({
                     title: <strong>Thành Công!</strong>,
                     html: <i>You clicked the button!</i>,
