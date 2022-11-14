@@ -11,5 +11,85 @@
     border: 1px solid black;
     text-align: center;
     font-size: 18px;
+    font-weight: 450;
 
+}
+.btn-xoa{
+    background-color: coral;
+    font-size: 18px;
+    border-radius: 5px;
+    color: #fff;
+    width: 60px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+}
+.btn-xoa:hover{
+    background-color: rgba(255, 127, 80, 0.845);
+}
+.btn-xoa:active{
+    background-color: red;
+}
+.btn-add{
+    border: 1px solid tomato;
+    border-radius: 5px;
+}
+.btn-add:active{
+    background-color: rgba(255, 127, 80, 0.845);
+}
+.sum-vnd{
+    height: 80px;
+    width: 450px;
+    background-color: aliceblue;
+    margin-left: 39%;
+    margin-top: 30px;
+    display: flex;
+    border-radius: 10px;
+}
+.sum-text{
+    font-size: 30px;
+    font-weight: 500;
+    height: 100%;
+    width: 180px;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 10px;
+    border-radius: 5px;
+    
+}
+.sum-text-vnd{
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    font-size: 30px;
+    width: 270px ;
+    font-weight: 500;
+    height: 100%;
+    text-align: center;
+}
+.btn-tt{
+    background-color: tomato;
+    border-radius: 5px;
+    border: none;
+    width: 150px;
+    height: 50px;
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+    margin-left: 47%;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+.btn-tt:hover{
+    background-color: rgba(255, 99, 71, 0.809);
+}
+.cart-null{
+    padding-left: 35%;
+}
+.cart-null-label{
+    font-size: 20px;
+    color: rgb(16, 55, 212);
+    font-weight: 500;
+    margin-left: 100px;
 }

@@ -92,15 +92,15 @@ function Signup(){
                             <div className="loading-spinner">
                             </div>
                         </div> :
-                            <button className="sumbit">
+                            <button className="sumbit-signup">
                                 <div className="text-submit">
-                                    Đăng nhập
+                                    Đăng Ký
                                 </div>
                             </button>}
                     </div>
                     <br></br>
                     <Link to="/login" className="link-to-login">
-                        <div className="link-login"> Đăng nhập  </div>
+                        <div className="link-login"> Đăng Nhập  </div>
                     </Link> 
                 </div>
             </div>
