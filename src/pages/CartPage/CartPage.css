@@ -1,0 +1,27 @@
+.choose{
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-left: 10px;
+    height: 50px;
+    width: 250px;
+    font-size: 23px;
+    color: rgba(0, 0, 0, 0.821);
+    border: 1px solid rgba(0, 0, 0, 0.821);
+    font-weight: 500;
+}
+.cart-page-hang, .cart-page-info{
+    border-radius: 5px;
+    margin-left: 10px;
+    height: 50px;
+    width: 250px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #fff;
+    background-color: tomato;
+    border: 1px solid #fff;
+}
+.cart-page-hang:hover, .cart-page-info:hover{
+    background-color: rgba(255, 99, 71, 0.799);
+    border: 1px solid rgba(0, 0, 0, 0.821);
+
+}

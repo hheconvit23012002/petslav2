@@ -3,42 +3,43 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import * as actions from "./../../action/index";
 import ApiCallerHeader from "./../../utills/CallApiGetProfile";
+import "./ReceiverInfo.css"
 function ReceiverInfo(props) {
-    if(sessionStorage.getItem("token") === null){
-        window.location.href  = "/cart"
+    if (sessionStorage.getItem("token") === null) {
+        window.location.href = "/cart"
     }
     props.onGetToken();
     let name = JSON.parse(localStorage.getItem("name"))
-    const [ipName,setIpName] = useState(name)
-    const [ipPhone,setIpPhone] = useState("")
-    const [ipAddress,setIpAddress] = useState("")
-    const [ipNote,setIpNote] = useState("")
+    const [ipName, setIpName] = useState(name)
+    const [ipPhone, setIpPhone] = useState("")
+    const [ipAddress, setIpAddress] = useState("")
+    const [ipNote, setIpNote] = useState("")
     const MySwal = withReactContent(Swal)
-    
-    function handleSubmit(e){
+
+    function handleSubmit(e) {
         e.preventDefault()
-        if(ipName !=="" && ipAddress !== "" && ipNote !=="" && ipPhone!== "" && sessionStorage.getItem("token") !== null){
-            let sum=0
+        if (ipName !== "" && ipAddress !== "" && ipNote !== "" && ipPhone !== "" && sessionStorage.getItem("token") !== null) {
+            let sum = 0
             let listItem = JSON.parse(localStorage.getItem("cart")).map(x => {
-                sum+=(x.price * x.quantity)
+                sum += (x.price * x.quantity)
                 return {
                     product_id: x.id,
-                    quantity:x.quantity,
-                    price:x.price
+                    quantity: x.quantity,
+                    price: x.price
                 }
             })
             let dataRequest = {
-                address:ipAddress,
-                note:ipNote,
-                number_phone:ipPhone,
+                address: ipAddress,
+                note: ipNote,
+                number_phone: ipPhone,
                 total_price: sum,
                 orderItems: listItem
             }
-            return ApiCallerHeader("/add-order/",'POST',dataRequest,props.token).then(() => {
-                
+            return ApiCallerHeader("/add-order/", 'POST', dataRequest, props.token).then(() => {
+
                 MySwal.fire({
                     title: <strong>Thành Công!</strong>,
                     html: <i>You clicked the button!</i>,
@@ -51,8 +52,8 @@ function ReceiverInfo(props) {
                     icon: 'error'
                 })
             })
-            
-        }else{
+
+        } else {
             MySwal.fire({
                 title: <strong>Vui lòng nhập đủ thông tin</strong>,
                 html: <i>You clicked the button!</i>,
@@ -60,46 +61,53 @@ function ReceiverInfo(props) {
             })
         }
     }
-    function back(){
+    function back() {
         props.setPageCurrent(true)
     }
-    function onChange(e){
-        if(e.target.name === "phone-receiver"){
+    function onChange(e) {
+        if (e.target.name === "phone-receiver") {
             setIpPhone(e.target.value)
         }
-        else if(e.target.name === "name-receiver"){
+        else if (e.target.name === "name-receiver") {
             setIpName(e.target.value)
         }
-        else if(e.target.name === "address-receiver"){
+        else if (e.target.name === "address-receiver") {
             setIpAddress(e.target.value)
         }
-        else if(e.target.name === "note-receiver"){
+        else if (e.target.name === "note-receiver") {
             setIpNote(e.target.value)
         }
     }
     return (
         <div>
-            Thông tin người nhận
             <form onSubmit={e => handleSubmit(e)}>
-                Tên người nhận
-                <br></br>
-                <input type="text" name="name-receiver" required onChange={e => onChange(e)} value={ipName}></input>
-                <br></br>
-                Số điện thoại người nhận
-                <br></br>
-                <input name="phone-receiver" type="text" required onChange={e => onChange(e)} value={ipPhone} ></input>
-                <br></br>
-                Địa chỉ người nhận
-                <br></br>
-                <input name="address-receiver" type="text" required onChange={e => onChange(e)} value={ipAddress} ></input>
-                <br></br>
-                Chú ý
-                <br></br>
-                <input name="note-receiver" type="text" required onChange={e => onChange(e)} value={ipNote} ></input>
-                <br></br>
-                <button>Đặt hàng</button>
+                <div className="info">
+                    <div className="info-name">
+                        <div className="info-name-label">Tên người nhận</div>
+                        <input className="info-name-text" type="text" name="name-receiver" required onChange={e => onChange(e)} value={ipName}></input>
+                    </div>
+                    <br></br>
+                    <div className="info-name">
+                        <div className="info-name-label">Số điện thoại người nhận</div>
+                        <input className="info-name-text" type="text" name="phone-receiver" required onChange={e => onChange(e)} value={ipPhone}></input>
+                    </div>
+                    <br></br>
+                    <div className="info-name">
+                        <div className="info-name-label">Địa chỉ người nhận</div>
+                        <input className="info-name-text" type="text" name="address-receiver" required onChange={e => onChange(e)} value={ipAddress}></input>
+                    </div>
+                    <br></br>
+                    <div className="info-name">
+                        <div className="info-name-label">Chú ý</div>
+                        <input className="info-name-text" type="text" name="note-receiver" required onChange={e => onChange(e)} value={ipNote}></input>
+                    </div>
+                    <br></br>
+                    <Link to="/cart" onClick={() => back()}>
+                        <button className="btn-cancel">Quay lại</button>
+                    </Link>
+                    <button className="btn-oder">Đặt hàng</button>
+                </div>
             </form>
-            <Link to="/cart" onClick={() => back()}>Quay lại</Link>
         </div>
     )
 }
@@ -108,13 +116,13 @@ const mapStateToProps = (state) => {
         token: state.token
     }
 }
-const mapDisPatchToProps = (dispatch,props) => {
+const mapDisPatchToProps = (dispatch, props) => {
     return {
         onGetToken: () => {
             dispatch(actions.GetToken())
         },
-        
+
     }
 }
 
-export default connect(mapStateToProps,mapDisPatchToProps)(ReceiverInfo)
+export default connect(mapStateToProps, mapDisPatchToProps)(ReceiverInfo)

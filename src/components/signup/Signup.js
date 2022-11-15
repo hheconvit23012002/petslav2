@@ -87,16 +87,17 @@ function Signup() {
                                 Đăng kí
                          </div>
                     </button> */}
-                        <div className="signup-sumbit">
+                        <div>
                             {isLoading ? <div className="spinner-container"  >
                                 <div className="loading-spinner">
                                 </div>
                             </div> :
-                                <button className="sumbit">
+                                <button className="sumbit-signup">
                                     <div className="text-submit">
-                                        Đăng ky
+                                        Đăng Ký
                                     </div>
-                                </button>}
+                                </button>
+                            }
                         </div>
                         <br></br>
                         <Link to="/login" className="link-to-login">

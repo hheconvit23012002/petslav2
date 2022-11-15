@@ -1,0 +1,69 @@
+.info{
+    background-color: #f6f9fc;
+    width: 900px;
+    height: 550px;
+    margin-left: 27%;
+    padding-top: 10px;
+    border-radius: 10px;
+    margin-top: 50px;
+    padding: 20px;
+}
+.info-name{
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 700;
+    height: 70px;
+    display: flex;
+}
+.info-name-label{
+    width: 250px;
+    font-size: 21px;
+    font-weight: 500;
+    margin-right: 40px;
+    margin-left: 20px;
+    padding-top: 25px;
+}
+.info-name-text{
+    width: 500px;
+    font-size: 19px;
+    font-weight: 300;
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+.btn-cancel{
+    width: 300px;
+    height: 60px;
+    margin-left: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 90px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+.btn-oder{
+    width: 300px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 50px;
+    margin-left: 90px;
+    background-color: tomato;
+    color: #fff;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+.btn-cancel:hover{
+    border: 1px solid black;
+}
+.btn-oder:hover{
+    background-color: rgba(255, 99, 71, 0.793);
+}
+.info-name-text:focus{
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.4rem rgb(13 110 253 / 25%);
+}
