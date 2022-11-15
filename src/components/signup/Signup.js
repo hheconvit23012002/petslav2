@@ -4,24 +4,24 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { Link } from "react-router-dom";
 import './signup.css';
-function Signup(){
-    const [ipFirstname,setIpFirstName] = useState("")
-    const [ipLastName,setIpLasttName] = useState("")
-    const [ipEmail,setIpEmail] = useState("")
-    const [ipUserName,setIpUserName] = useState("")
-    const [ipPass,setIpPass] = useState("")
+function Signup() {
+    const [ipFirstname, setIpFirstName] = useState("")
+    const [ipLastName, setIpLasttName] = useState("")
+    const [ipEmail, setIpEmail] = useState("")
+    const [ipUserName, setIpUserName] = useState("")
+    const [ipPass, setIpPass] = useState("")
     const [isLoading, setLoading] = useState(false)
     const MySwal = withReactContent(Swal)
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault()
-        if(ipFirstname === "" || ipLastName==="" || ipEmail==="" || ipUserName==="" || ipPass===""){
+        if (ipFirstname === "" || ipLastName === "" || ipEmail === "" || ipUserName === "" || ipPass === "") {
             MySwal.fire({
                 title: <strong>Vui lòng nhập hết các trường!</strong>,
                 html: <i>You clicked the button!</i>,
                 icon: 'error'
             })
         }
-        else{
+        else {
             let res = {
                 first_name: ipFirstname,
                 last_name: ipLastName,
@@ -30,7 +30,7 @@ function Signup(){
                 password: ipPass
             }
             setLoading(true)
-            ApiCaller("/register/",'POST',res).then(e => {
+            ApiCaller("/register/", 'POST', res).then(e => {
                 setLoading(false)
                 setIpFirstName("")
                 setIpLasttName("")
@@ -52,58 +52,58 @@ function Signup(){
             })
         }
     }
-    function onChange(e){
-       
-        if(e.target.className === "firstNameSignup"){
+    function onChange(e) {
+
+        if (e.target.className === "firstNameSignup") {
             setIpFirstName(e.target.value)
         }
-        else if(e.target.className === "lastNameSignup"){
+        else if (e.target.className === "lastNameSignup") {
             setIpLasttName(e.target.value)
-        }else if(e.target.className === "emailSignup"){
+        } else if (e.target.className === "emailSignup") {
             setIpEmail(e.target.value)
-        }else if(e.target.className === "usernameSignup"){
+        } else if (e.target.className === "usernameSignup") {
             setIpUserName(e.target.value)
-        }else if(e.target.className === "passwordSignup"){
+        } else if (e.target.className === "passwordSignup") {
             setIpPass(e.target.value)
         }
     }
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="signup-background">
-                <div className="signup-khung">
-                    <input type="text" className="firstNameSignup" placeholder="firstName" required value={ipFirstname} onChange={ (e) => onChange(e)}></input>
-                    <br></br>
-                    <input type="text" className="lastNameSignup" placeholder="lastName" required value={ipLastName} onChange={ (e) => onChange(e)}></input>
-                    <br></br>
-                    <input type="email" className="emailSignup" placeholder="email" required value={ipEmail} onChange={ (e) => onChange(e)}></input>
-                    <br></br>
-                    <input type="text" className="usernameSignup" placeholder="username" required value={ipUserName} onChange={ (e) => onChange(e)}></input>
-                    <br></br>
-                    <input type="password" className="passwordSignup" placeholder="password" required value={ipPass} onChange={ (e) => onChange(e)}></input>
-                    <br></br>
-                    {/* <button className="signup-sumbit">
+                <div className="signup-background">
+                    <div className="signup-khung">
+                        <input type="text" className="firstNameSignup" placeholder="firstName" required value={ipFirstname} onChange={(e) => onChange(e)}></input>
+                        <br></br>
+                        <input type="text" className="lastNameSignup" placeholder="lastName" required value={ipLastName} onChange={(e) => onChange(e)}></input>
+                        <br></br>
+                        <input type="email" className="emailSignup" placeholder="email" required value={ipEmail} onChange={(e) => onChange(e)}></input>
+                        <br></br>
+                        <input type="text" className="usernameSignup" placeholder="username" required value={ipUserName} onChange={(e) => onChange(e)}></input>
+                        <br></br>
+                        <input type="password" className="passwordSignup" placeholder="password" required value={ipPass} onChange={(e) => onChange(e)}></input>
+                        <br></br>
+                        {/* <button className="signup-sumbit">
                         <div className="signup-text">
                                 Đăng kí
                          </div>
                     </button> */}
-                    <div>
-                    {isLoading ? <div className="spinner-container"  >
-                            <div className="loading-spinner">
-                            </div>
-                        </div> :
-                            <button className="sumbit">
-                                <div className="text-submit">
-                                    Đăng nhập
+                        <div className="signup-sumbit">
+                            {isLoading ? <div className="spinner-container"  >
+                                <div className="loading-spinner">
                                 </div>
-                            </button>}
+                            </div> :
+                                <button className="sumbit">
+                                    <div className="text-submit">
+                                        Đăng ky
+                                    </div>
+                                </button>}
+                        </div>
+                        <br></br>
+                        <Link to="/login" className="link-to-login">
+                            <div className="link-login"> Đăng nhập  </div>
+                        </Link>
                     </div>
-                    <br></br>
-                    <Link to="/login" className="link-to-login">
-                        <div className="link-login"> Đăng nhập  </div>
-                    </Link> 
                 </div>
-            </div>
             </form>
         </div>
     )

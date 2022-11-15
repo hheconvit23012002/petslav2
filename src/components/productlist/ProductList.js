@@ -4,7 +4,9 @@ import * as actions from './../../action/index'
 import ProductItem from "./../productItem/ProductItem"
 function ProductList(props) {
     useEffect(() => {
-        props.onCallApiFetchData();
+        if(props.task.length === 0){
+            props.onCallApiFetchData();
+        }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
     const [pageCurent,setPageCurent] = useState(1)
     const [productOnPage,setProductOnPage] = useState(12)
@@ -21,7 +23,9 @@ function ProductList(props) {
     start()
     const handleChangePage = (value) => {
         console.log(sessionStorage.token)
-        setPageCurent(() => {return value})
+        // setPageCurent(() => {return value})
+        setPageCurent(value);
+        // setPageCurent(value => value+1)
     }
     const handleChangeProduct = (e) => {
         setPageCurent(() => {return 1})
