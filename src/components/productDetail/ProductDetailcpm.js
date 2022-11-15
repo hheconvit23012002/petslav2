@@ -5,7 +5,9 @@ import * as actions from './../../action/index'
 import './ProductDetailcpm.css'
 function ProductDetailcpm(props) {
     useEffect(() => {
-        props.onCallApiFetchData();
+        if(props.task.length === 0){
+            props.onCallApiFetchData();
+        }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
     let param = useParams()
     let item =undefined
@@ -24,7 +26,7 @@ function ProductDetailcpm(props) {
         return x;
     }
     return (
-        item ? 
+        !!item && 
         <div className="container-page-cart">
             <div className="grid wide">
                 <div className="row useInnerHTML">
@@ -34,7 +36,7 @@ function ProductDetailcpm(props) {
                     <div className="l-6 c-12 m-6 col">
                         <h1 className="title-product">{item.product_name}</h1>
                         <div className="product-price">
-                            <span>${converToVND(item.price)}</span>
+                            <span>{converToVND(item.price)}</span>
                         </div>
                         <div className="btn-wrap">
                             <button className="buy-in-cart-btn">Buy Now</button>
@@ -47,8 +49,7 @@ function ProductDetailcpm(props) {
                     </div>
                 </div>
             </div>
-        </div> :
-        <div></div>
+        </div> 
     )
 }
 const mapStateToProps = (state) => {
