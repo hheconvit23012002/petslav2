@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from 'react-redux';
+import {  useSearchParams } from "react-router-dom";
 import * as actions from './../../action/index'
 import ProductItem from "./../productItem/ProductItem"
 function ProductList(props) {
@@ -8,15 +9,20 @@ function ProductList(props) {
             props.onCallApiFetchData();
         }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    let [searchParams,] = useSearchParams()
     const [pageCurent,setPageCurent] = useState(1)
     const [productOnPage,setProductOnPage] = useState(12)
     let res = []
     let arrNumPage = []
-    let numberPage = Math.ceil(props.task.length/productOnPage)
+    let listItem = props.task
+    if(searchParams.get('search') !== null){
+        listItem = props.search
+    }
+    let numberPage = Math.ceil(listItem.length/productOnPage)
     for(let i=1;i<=numberPage;i++){
         arrNumPage.push(i)
     }
-    res = props.task.slice((pageCurent-1)*productOnPage,(pageCurent-1)*productOnPage + productOnPage)
+    res = listItem.slice((pageCurent-1)*productOnPage,(pageCurent-1)*productOnPage + productOnPage)
     const handleChangePage = (value) => {
         setPageCurent(value);
     }
@@ -144,6 +150,7 @@ function ProductList(props) {
 const mapStateToProps = (state) => {
     return {
         task: state.task,
+        search: state.search
     }
 }
 const mapDispatchToProps = (dispatch, props) => {
