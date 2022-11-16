@@ -6,6 +6,7 @@ import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import AccountPage from "./pages/AccountPage/AccountPage";
 import CartPage from "./pages/CartPage/CartPage";
+import HomePage from "./components/homePage/homePage";
 const routes = [
     {
         id:1,
@@ -46,6 +47,11 @@ const routes = [
         id:8,
         path:"receiver-info",
         main: () => <CartPage/>
+    },
+    {
+        id:9,
+        path:"homePage",
+        main: () => <HomePage/>
     }
 ]
 

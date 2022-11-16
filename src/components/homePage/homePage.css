@@ -1,0 +1,56 @@
+.homepage-img1{
+    width: 100%;
+}
+.next-left{
+    position: absolute;
+    font-size: 30px;
+    bottom: 400px;
+    left: 50px;
+    color: rgba(240, 248, 255, 0.59);
+    cursor: pointer;
+}
+.next-right{
+    position: absolute;
+    font-size: 30px;
+    right: 50px;
+    bottom: 400px;
+    color: rgba(240, 248, 255, 0.59);    
+    cursor: pointer;
+}
+.next-right:hover, .next-left:hover{
+    color: rgb(237, 237, 237);
+}
+.next-1{
+    font-size: 50px;
+    position: absolute;
+    color: rgba(240, 248, 255, 0.59);    
+    bottom: 80px;
+    left: 47%;
+
+}
+.next-2{
+    font-size: 50px;
+    position: absolute;
+    color: rgba(240, 248, 255, 0.59);    
+    bottom: 80px;
+    left: 50%;
+
+
+}
+.homepage-img2{
+    z-index: 1;
+}
+.chosse-page1{
+    font-size: 50px;
+    position: absolute;
+    color: red; 
+    bottom: 80px;
+    left: 47%;
+}
+.chosse-page2{
+    font-size: 50px;
+    position: absolute;
+    color: red; 
+    bottom: 80px;
+    left: 50%;
+}
