@@ -9,7 +9,6 @@ function LoginPage(){
             navigate("/")
         }
     },[navigate])
-    
     return (
         <Login/>
     )

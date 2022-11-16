@@ -16,12 +16,15 @@ function Menu(props) {
         setIpSearch(e.target.value)
     }
     function handleSubmit(e){
-        // if(ipSearch === ""){
-        //     navigate("/")
-        // }else{
-        //     props.onSearch(ipSearch,props.task)
-        //     // navigate(`?search=${ipSearch}`)
-        // }
+        e.preventDefault()
+        if(ipSearch === ""){
+            navigate("/")
+        }else{
+            props.onSearch(ipSearch,props.task)
+            navigate(`/?search=${ipSearch}`)
+            // const search = searchParams.get('/search')
+            // setSearchParams({'search':ipSearch})
+        }
     }
     return (
         <div>
@@ -79,7 +82,7 @@ function Menu(props) {
                                 <div className="cover-input">
                                         <input type="text" name="search" className="input" onChange={e => handleChange(e)}
                                             placeholder="Everything here is better than your ex" value={ipSearch}/>
-                                        <button type="button"  className="search-btn">
+                                        <button className="search-btn">
                                             <i className="bi bi-search"></i>
                                         </button>
                                 </div>
