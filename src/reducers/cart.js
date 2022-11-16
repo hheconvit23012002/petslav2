@@ -40,6 +40,10 @@ let myReducers = (state = initialState,action) => {
             }
             localStorage.setItem("cart",JSON.stringify(state))
             return [...state]
+        case types.DELETE_CART:
+            localStorage.removeItem("cart")
+            state = []
+            return [...state]
         default: return state
     }
 }

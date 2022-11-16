@@ -9,6 +9,9 @@ var myReducers = (state = initialState, action) => {
         case types.SHOW_PROFILE:
             state = action.data
             return state
+        case types.PRODUCT_DETAIL:
+            state = action.data
+            return state
         default: return state
     }
 } 

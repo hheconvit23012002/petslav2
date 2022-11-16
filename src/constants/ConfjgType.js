@@ -9,3 +9,7 @@ export const DELETE_TOKEN = "DELETE_TOKEN"
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const UPDATE_CART = 'UPDATE_CART'
 export const ORDER = 'ORDER'
+export const DELETE_CART = "DELETE_CART"
+export const SORT_PRODUCT = "SORT_PRODUCT"
+export const GET_PRODUCT_DETAIL_API = "GET_PRODUCT_DETAIL_API"
+export const SEARCH = "SEARCH"

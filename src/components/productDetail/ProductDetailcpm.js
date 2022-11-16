@@ -4,19 +4,11 @@ import { useParams } from 'react-router-dom';
 import * as actions from './../../action/index'
 import './ProductDetailcpm.css'
 function ProductDetailcpm(props) {
-    useEffect(() => {
-        if(props.task.length === 0){
-            props.onCallApiFetchData();
-        }
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
     let param = useParams()
-    let item =undefined
-    props.task.forEach(element => {
-        if ("" + element.id === param.id) {
-            item = element;
-        }
-    });
-
+    let {item} = props
+    useEffect(() => {
+        props.onGetItem(param.id)
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
     function handleAdd(e,items){
         props.onAddToCart(items)
     }
@@ -26,7 +18,7 @@ function ProductDetailcpm(props) {
         return x;
     }
     return (
-        !!item && 
+        !!item && item.id+"" === param.id && 
         <div className="container-page-cart">
             <div className="grid wide">
                 <div className="row useInnerHTML">
@@ -54,13 +46,13 @@ function ProductDetailcpm(props) {
 }
 const mapStateToProps = (state) => {
     return {
-        task: state.task
+        item: state.profile
     }
 }
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        onCallApiFetchData: () => {
-            dispatch(actions.callApiGetItem())
+        onGetItem: (id) => {
+            dispatch(actions.callApigetProductDetail(id))
         },
         onAddToCart : (data) => {
             dispatch(actions.addToCart(data))

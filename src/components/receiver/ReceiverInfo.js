@@ -21,7 +21,8 @@ function ReceiverInfo(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        if (ipName !== "" && ipAddress !== "" && ipNote !== "" && ipPhone !== "" && sessionStorage.getItem("token") !== null) {
+        console.log(ipPhone.match(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g))
+        if (ipName !== "" && ipAddress !== "" && ipNote !== "" && ipPhone !== "" && sessionStorage.getItem("token") !== null && ipPhone.match(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g) ) {
             let sum = 0
             let listItem = JSON.parse(localStorage.getItem("cart")).map(x => {
                 sum += (x.price * x.quantity)
@@ -38,8 +39,8 @@ function ReceiverInfo(props) {
                 total_price: sum,
                 orderItems: listItem
             }
-            return ApiCallerHeader("/add-order/", 'POST', dataRequest, props.token).then(() => {
-
+            ApiCallerHeader("/add-order/", 'POST', dataRequest, props.token).then(() => {
+                props.onDelete()
                 MySwal.fire({
                     title: <strong>Thành Công!</strong>,
                     html: <i>You clicked the button!</i>,
@@ -53,9 +54,10 @@ function ReceiverInfo(props) {
                 })
             })
 
-        } else {
+        }
+         else {
             MySwal.fire({
-                title: <strong>Vui lòng nhập đủ thông tin</strong>,
+                title: <strong>Vui lòng nhập đủ thông tin và đúng định dạng</strong>,
                 html: <i>You clicked the button!</i>,
                 icon: 'error'
             })
@@ -121,7 +123,9 @@ const mapDisPatchToProps = (dispatch, props) => {
         onGetToken: () => {
             dispatch(actions.GetToken())
         },
-
+        onDelete: () => {
+            dispatch(actions.deleteCart())
+        }
     }
 }
 
