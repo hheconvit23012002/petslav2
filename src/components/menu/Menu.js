@@ -1,15 +1,27 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './../../action/index'
 function Menu(props) {
-
+    const navigate = useNavigate();
+    const [ipSearch,setIpSearch] = useState("")
     function handleLogout(e){   
         sessionStorage.removeItem("token")
         sessionStorage.removeItem("sait")
         props.onDeleteToken()
         let tmp = false;
         props.onChangeStatus(tmp)
+    }
+    function handleChange(e){
+        setIpSearch(e.target.value)
+    }
+    function handleSubmit(e){
+        // if(ipSearch === ""){
+        //     navigate("/")
+        // }else{
+        //     props.onSearch(ipSearch,props.task)
+        //     // navigate(`?search=${ipSearch}`)
+        // }
     }
     return (
         <div>
@@ -63,13 +75,13 @@ function Menu(props) {
                             </a>
                         </div>
                         <div className="header_input-search">
-                            <form >
+                            <form method="GET" action="" onSubmit={e => handleSubmit(e)}>
                                 <div className="cover-input">
-                                    <input type="text" name="" className="input"
-                                        placeholder="Everything here is better than your ex" />
-                                    <button className="search-btn">
-                                        <i className="bi bi-search"></i>
-                                    </button>
+                                        <input type="text" name="search" className="input" onChange={e => handleChange(e)}
+                                            placeholder="Everything here is better than your ex" value={ipSearch}/>
+                                        <button type="button"  className="search-btn">
+                                            <i className="bi bi-search"></i>
+                                        </button>
                                 </div>
                             </form>
                         </div>
@@ -110,7 +122,8 @@ function Menu(props) {
 const mapStateToProps = (state) => {
     return {
         status: state.status,
-        cart: state.cart
+        cart: state.cart,
+        task: state.task
     }
 }
 const mapDispatchToProps = (dispatch, props) => {
@@ -120,6 +133,9 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         onDeleteToken: () => {
             dispatch(actions.deleteToken())
+        },
+        onSearch: (data,list) => {
+            dispatch(actions.search(data,list))
         }
     }
 }

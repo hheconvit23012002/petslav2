@@ -11,21 +11,17 @@ function ProductList(props) {
     const [pageCurent,setPageCurent] = useState(1)
     const [productOnPage,setProductOnPage] = useState(12)
     let res = []
-    let ArrNumPage = []
-    function start(){
-        
-        let NumberPage = Math.ceil(props.task.length/productOnPage)
-        for(let i=1;i<=NumberPage;i++){
-            ArrNumPage.push(i)
-        }
-        res = props.task.slice((pageCurent-1)*productOnPage,(pageCurent-1)*productOnPage + productOnPage)
+    let arrNumPage = []
+    let numberPage = Math.ceil(props.task.length/productOnPage)
+    for(let i=1;i<=numberPage;i++){
+        arrNumPage.push(i)
     }
-    start()
+    res = props.task.slice((pageCurent-1)*productOnPage,(pageCurent-1)*productOnPage + productOnPage)
     const handleChangePage = (value) => {
-        console.log(sessionStorage.token)
-        // setPageCurent(() => {return value})
         setPageCurent(value);
-        // setPageCurent(value => value+1)
+    }
+    const handleSort = (e) => {
+        props.onSort(e.target.value)
     }
     const handleChangeProduct = (e) => {
         setPageCurent(() => {return 1})
@@ -35,6 +31,15 @@ function ProductList(props) {
         <div>
             <div className="container">
                 <div className="grid wide">
+                    <div className="tool-search">
+                        <select onChange={e => handleSort(e)}>
+                            <option value={0}>Relevance</option>
+                            <option value={1}>Name : A-Z</option>
+                            <option value={2}>Name : Z-A</option>
+                            <option value={3}>Price : Low to High</option>
+                            <option value={4}>Price : High to Low</option>
+                        </select>
+                    </div>
                     <div className="row cover-container">
                         {
                             res.map((value, index) => {
@@ -51,9 +56,9 @@ function ProductList(props) {
                             </button>
                             <div className="list">
                                 {
-                                    ArrNumPage.map(value => {
+                                    arrNumPage.map(value => {
                                         return(
-                                            <button key={value} id={value} onClick={() => handleChangePage(value)}>{value}</button>
+                                            <button className={pageCurent===value ? "page_currunt" : ""} key={value} id={value} onClick={() => handleChangePage(value)}>{value}</button>
                                         )
                                     })
                                 }
@@ -145,6 +150,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         onCallApiFetchData: () => {
             dispatch(actions.callApiGetItem())
+        },
+        onSort : (value) => {
+            dispatch(actions.sortProduct(value))
         }
     }
 }

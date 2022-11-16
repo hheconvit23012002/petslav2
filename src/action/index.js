@@ -14,17 +14,7 @@ export const ShowItem=(product) => {
         product
     }
 }
-// export const callApiLogin = (user) => {
-    
-//     return dispatch => {
-//         return ApiCaller('/login/','POST',user).then(res => {
-//             dispatch(saveLogin(res.data.token))
-//         }).catch(err => {
-//             console.log("day")
-//             sessionStorage.err = err
-//         })
-//     }
-// }
+
 
 export const saveLogin = (token) => {
     return {
@@ -76,8 +66,37 @@ export const updateCart = (id,typeUpdate) => {
     }
 }
 
-// export const CallApiOrder = (data,token) => {
-//     return dispatch => {
-//         return ApiCallerHeader("/add-order/",'POST',data,token)
-//     }
-// }
+
+export const deleteCart = () => {
+    return {
+        type:types.DELETE_CART
+    }
+}
+
+export const sortProduct= (value) => {
+    return {
+        type:types.SORT_PRODUCT,
+        value
+    }
+}
+export const callApigetProductDetail = (id) => {
+    return dispatch => {
+        return ApiCaller(`/product/${id}`,'GET',null).then(res => {
+            dispatch(productDetail(res.data))
+        })
+    }
+}
+export const productDetail = (data) => {
+
+    return {
+        type:types.PRODUCT_DETAIL,
+        data
+    }
+}
+export const search = (data,list) => {
+    return {
+        type:types.SEARCH,
+        data,
+        list
+    }
+} 
