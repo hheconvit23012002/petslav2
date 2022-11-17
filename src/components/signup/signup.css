@@ -2,15 +2,40 @@
     display: block;
     width: 100%;
     height: 750px;
-    background-image: linear-gradient(0, #da3514, #f16425);
-    padding-top: 100px;
+    background: #f6f9fc;
+    padding-top: 40px;
 }
 .signup-khung{
     width: 400px;
-    height: 550px;
     margin: 0px auto;
     background-color: #fff;
-    border-radius: 10px;
+    border: 1px solid rgb(206, 199, 199);
+    box-shadow: 0px 5px 5px 5px  #dadfe4;
+}
+.sigup-lable{
+    font-size: 40px;
+    color: black;
+    font-weight: 500;
+    width: 100%;
+    height: 80px;
+    padding: 25px;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdbf2;
+}
+.signup-ip{
+    display: block;
+    font-family: "Nunito",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    padding: 16px 24px;
+    box-sizing: border-box;
+    font-family: "Nunito",sans-serif;
+    transition: background-color .3s;
+    color: inherit;
+    justify-content: center;
+    align-items: center;
 }
 .firstNameSignup{
     margin-top: 70px;
@@ -22,11 +47,14 @@
     margin-top: 20px;
 }
 .firstNameSignup, .lastNameSignup, .emailSignup, .usernameSignup, .passwordSignup {
+    width: 98%;
+    margin: 10px 5px;
+    padding: 8px 10px;
     font-size: 20px;
     border-radius: 5px;
-    margin-left: 77px;
-    height: 35px;
     border: 1px solid #dbdbdbf2;
+    font-size: 16px;
+    font-weight: 400;
 }
 .firstNameSignup:focus, .lastNameSignup:focus, .emailSignup:focus, .usernameSignup:focus, .passwordSignup:focus{
     border-color: #86b7fe;
@@ -34,18 +62,18 @@
     box-shadow: 0 0 0 0.4rem rgb(13 110 253 / 25%);
 }
 .sumbit-signup{
-    margin-top: 50px;
-    margin-left: 58px;
-    font-size: 25px;
-    width: 70%;
-    height: 50px;
-    background-color: #ee4d2de6;
-    border: none;
+    width: 98%;
+    margin: 10px 5px;
+    padding: 8px 10px;
+    font-size: 20px;
     border-radius: 5px;
-    border: none;
+    border: 1px solid #dbdbdbf2;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #e69646;
     color: #fff;
-    font-weight: 300;
     cursor: pointer;
+    text-align: center;
 }
 .link-login{
     font-size: 16px;

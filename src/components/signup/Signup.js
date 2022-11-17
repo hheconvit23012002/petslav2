@@ -72,37 +72,46 @@ function Signup() {
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="signup-background">
                     <div className="signup-khung">
-                        <input type="text" className="firstNameSignup" placeholder="firstName" required value={ipFirstname} onChange={(e) => onChange(e)}></input>
-                        <br></br>
-                        <input type="text" className="lastNameSignup" placeholder="lastName" required value={ipLastName} onChange={(e) => onChange(e)}></input>
-                        <br></br>
-                        <input type="email" className="emailSignup" placeholder="email" required value={ipEmail} onChange={(e) => onChange(e)}></input>
-                        <br></br>
-                        <input type="text" className="usernameSignup" placeholder="username" required value={ipUserName} onChange={(e) => onChange(e)}></input>
-                        <br></br>
-                        <input type="password" className="passwordSignup" placeholder="password" required value={ipPass} onChange={(e) => onChange(e)}></input>
-                        <br></br>
+                        <div className="sigup-lable">Đăng Ký</div>
+                        <div className="signup-ip">
+                            <input type="text" className="firstNameSignup" placeholder="firstName" required value={ipFirstname} onChange={(e) => onChange(e)}></input>
+
+                            <input type="text" className="lastNameSignup" placeholder="lastName" required value={ipLastName} onChange={(e) => onChange(e)}></input>
+
+                            <input type="email" className="emailSignup" placeholder="email" required value={ipEmail} onChange={(e) => onChange(e)}></input>
+
+                            <input type="text" className="usernameSignup" placeholder="username" required value={ipUserName} onChange={(e) => onChange(e)}></input>
+
+                            <input type="password" className="passwordSignup" placeholder="password" required value={ipPass} onChange={(e) => onChange(e)}></input>
+
+                        </div>
                         {/* <button className="signup-sumbit">
                         <div className="signup-text">
                                 Đăng kí
                          </div>
                     </button> */}
                         <div>
+                        <div className="sumbit">
                             {isLoading ? <div className="spinner-container"  >
                                 <div className="loading-spinner">
                                 </div>
                             </div> :
                                 <button className="sumbit-signup">
-                                    <div className="text-submit">
                                         Đăng Ký
-                                    </div>
                                 </button>
                             }
+                                <div class="separate-wrap">
+                                    <div class="separate-dash"></div>
+                                    <div class="separate-text">OR</div>
+                                    <div class="separate-dash"></div>
+                                </div>
+                                <div className="submit-gg">Đăng nhập with Google </div>
+                                <div className="submit-fb">Đăng nhập with Facebook </div>
+                                <Link to="/login" className="link-to-signup">
+                                    <button className="sigup">Already have an account? Login </button>
+                                </Link>
+                            </div>
                         </div>
-                        <br></br>
-                        <Link to="/login" className="link-to-login">
-                            <div className="link-login"> Đăng nhập  </div>
-                        </Link>
                     </div>
                 </div>
             </form>

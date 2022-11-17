@@ -23,8 +23,8 @@ function Cart(props) {
     }
     return (
         props.listItem.length ?
-            <div>
-                <table style={{ border: "1px solid black", width: "100%", margin: "100px 0 0 0" }}>
+            <div className="background-cart">
+                <table className="table-cart">
                     <tbody>
                         <tr>
                             <td className="btn-td">Mã</td>

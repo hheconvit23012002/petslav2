@@ -66,28 +66,35 @@ function Login(props) {
 
                 <div className="login-khung">
                     <div className="label-login"> Đăng nhập </div>
-                    <br></br>
-                    {/* Tài khoản  */}
-                    <input type="text" name="username" required className="username" placeholder=" Tên tài khoản" value={inputUserName} onChange={(e) => onChange(e)}></input>
-                    <br></br>
-                    {/* Mật khẩu */}
-                    <input type="password" name="password" required className="password" placeholder=" Mật khẩu" value={inputPassWord} onChange={(e) => onChange(e)}></input>
-                    <br></br>
-                    <div className="cover_button_submit">
-                        {isLoading ? <div className="spinner-container"  >
-                            <div className="loading-spinner">
-                            </div>
-                        </div> :
-                            <button className="sumbit">
-                                <div className="text-submit">
-                                    Đăng nhập
-                                </div>
-                            </button>}
+                    <div className="login-ip">
+
+                        {/* Tài khoản  */}
+                        <input type="text" name="username" required className="username" placeholder="Tên tài khoản" value={inputUserName} onChange={(e) => onChange(e)}></input>
+                        {/* Mật khẩu */}
+                        <input type="password" name="password" required className="password" placeholder="Mật khẩu" value={inputPassWord} onChange={(e) => onChange(e)}></input>
+
                     </div>
-                    <br></br>
-                    <Link to="/signup" className="link-to-signup">
-                        <div className="sigup"> Đăng ký ?  </div>
-                    </Link>
+                    <div className="sumbit">
+                        <div className="cover_button_submit">
+                            {isLoading ? <div className="spinner-container"  >
+                                <div className="loading-spinner">
+                                </div>
+                            </div> :
+                                <button className="text-submit">
+                                    Đăng nhập
+                                </button>}
+                            <div class="separate-wrap">
+                                <div class="separate-dash"></div>
+                                <div class="separate-text">OR</div>
+                                <div class="separate-dash"></div>
+                            </div>
+                            <div className="submit-gg">Đăng nhập with Google </div>
+                            <div className="submit-fb">Đăng nhập with Facebook </div>
+                            <Link to="/signup" className="link-to-signup">
+                                <button className="sigup"> Do not have an account? Register </button>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>

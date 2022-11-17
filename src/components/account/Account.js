@@ -15,25 +15,42 @@ function Account(props) {
                 sessionStorage.getItem("token") && sessionStorage.getItem("sait") != null ?
                     <div className="account-background">
                         <div className="acc-khung">
-                        <div className="label-acc">
-                        <i className="bi bi-person-fill acc-icon">  </i>
-                            My profile
-                        </div>
-                        <div className="acc-fullname">
-                            <div className="acc-fullname-label"> fullName: </div>
-                            <div className="acc-fullname-text">{props.profile.name}</div>
-                        </div>
-                        <br></br>
-                        <div className="acc-fullname">
-                            <div className="acc-fullname-label"> email: </div>
-                            <div className="acc-fullname-text">{props.profile.email}</div>
-                        </div>
-                        <br></br>
-                        <div className="acc-fullname">
-                            <div className="acc-fullname-label"> username: </div>
-                            <div className="acc-fullname-text">{props.profile.username}</div>
-                        </div>
-                        <br></br>
+                            <div>
+                                <div className="account-list">
+                                    <div className="account-list-label"> DASHBOARD </div>
+                                    <div className="account-list-text">
+                                        <i class="bi bi-person"></i> Profile </div>
+                                    <div className="account-list-text">
+                                        <i class="bi bi-bag"></i> Orders </div>
+                                    <div className="account-list-text">
+                                        <i class="bi bi-heart"></i> Wishlist </div>
+                                </div>
+                            </div>
+                            <div className="account-info">
+
+                                <div className="label-acc">
+                                    <i className="bi bi-person-fill acc-icon">  </i>
+                                    My profile
+                                </div>
+                                <div className="account-info-text">
+                                    <div className="acc-fullname">
+                                        <div className="acc-fullname-label"> Tên: </div>
+                                        <div className="acc-fullname-text">{props.profile.name}</div>
+                                    </div>
+                                    <div className="acc-fullname">
+                                        <div className="acc-fullname-label"> Email: </div>
+                                        <div className="acc-fullname-text">{props.profile.email}</div>
+                                    </div>
+                                    <div className="acc-fullname">
+                                        <div className="acc-fullname-label"> Username: </div>
+                                        <div className="acc-fullname-text">{props.profile.username}</div>
+                                    </div>
+                                    <div className="acc-fullname">
+                                        <div className="acc-fullname-label"> Số điện thoại: </div>
+                                        <div className="acc-fullname-text"> </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div> :
                     window.location.href = "./login"

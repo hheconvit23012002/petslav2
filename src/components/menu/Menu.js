@@ -102,7 +102,7 @@ function Menu(props) {
                 <div className="grid wide">
                     <ul className="list-nav">
                         <li className="nav-item">
-                            <a href="/#" className="nav-item-link">title.homepage</a>
+                            <Link to="/HomePage" className="nav-item-link">title.homepage</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/#" className="nav-item-link" >title.shop</Link>

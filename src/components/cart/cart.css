@@ -1,5 +1,13 @@
+.background-cart{
+    background-color: #f6f9fc;
+    margin: 0;
+}
+.table-cart{
+    width: 100%;
+    padding: 30px 100px;
+}
 .btn-td{
-    border: 1px solid black;
+    border: 1px solid rgba(130, 125, 125, 0.851);
     border-radius: 5px;
     font-size: 25px;
     background-color: #f7f7f7;
@@ -8,14 +16,14 @@
     font-weight: 500;
 }
 .btn-td-item{
-    border: 1px solid black;
+    border: 1px solid rgba(130, 125, 125, 0.851);
     text-align: center;
     font-size: 18px;
     font-weight: 450;
 
 }
 .btn-xoa{
-    background-color: coral;
+    background-color: rgb(237, 90, 36);
     font-size: 18px;
     border-radius: 5px;
     color: #fff;
@@ -25,31 +33,34 @@
     cursor: pointer;
 }
 .btn-xoa:hover{
-    background-color: rgba(255, 127, 80, 0.845);
+    background-color: rgba(233, 79, 23, 0.845);
 }
 .btn-xoa:active{
     background-color: red;
 }
 .btn-add{
-    border: 1px solid tomato;
+    border: 1px solid rgb(213, 57, 30);
     border-radius: 5px;
+    background-color: #fff;
 }
 .btn-add:active{
-    background-color: rgba(255, 127, 80, 0.845);
+    background-color: rgba(232, 78, 23, 0.845);
 }
 .sum-vnd{
     height: 80px;
     width: 450px;
-    background-color: aliceblue;
+    background-color: #fff;
     margin-left: 39%;
     margin-top: 30px;
     display: flex;
     border-radius: 10px;
+    box-shadow: 0 5px 5px 5px rgb(202, 186, 186);
 }
 .sum-text{
     font-size: 30px;
     font-weight: 500;
     height: 100%;
+    color: #1b2c3d;
     width: 180px;
     padding-top: 30px;
     padding-left: 20px;
@@ -69,7 +80,8 @@
     text-align: center;
 }
 .btn-tt{
-    background-color: tomato;
+    background-color: rgb(219, 55, 26);
+    box-shadow: 0 5px 5px 5px rgb(156, 106, 106);
     border-radius: 5px;
     border: none;
     width: 150px;
@@ -82,7 +94,7 @@
     margin-bottom: 100px;
 }
 .btn-tt:hover{
-    background-color: rgba(255, 99, 71, 0.809);
+    background-color: rgba(242, 47, 13, 0.906);
 }
 .cart-null{
     padding-left: 35%;

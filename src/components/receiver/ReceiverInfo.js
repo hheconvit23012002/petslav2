@@ -22,7 +22,7 @@ function ReceiverInfo(props) {
     function handleSubmit(e) {
         e.preventDefault()
         console.log(ipPhone.match(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g))
-        if (ipName !== "" && ipAddress !== "" && ipNote !== "" && ipPhone !== "" && sessionStorage.getItem("token") !== null && ipPhone.match(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g) ) {
+        if (ipName !== "" && ipAddress !== "" && ipNote !== "" && ipPhone !== "" && sessionStorage.getItem("token") !== null && ipPhone.match(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g)) {
             let sum = 0
             let listItem = JSON.parse(localStorage.getItem("cart")).map(x => {
                 sum += (x.price * x.quantity)
@@ -55,7 +55,7 @@ function ReceiverInfo(props) {
             })
 
         }
-         else {
+        else {
             MySwal.fire({
                 title: <strong>Vui lòng nhập đủ thông tin và đúng định dạng</strong>,
                 html: <i>You clicked the button!</i>,
@@ -83,31 +83,29 @@ function ReceiverInfo(props) {
     return (
         <div>
             <form onSubmit={e => handleSubmit(e)}>
-                <div className="info">
-                    <div className="info-name">
-                        <div className="info-name-label">Tên người nhận</div>
-                        <input className="info-name-text" type="text" name="name-receiver" required onChange={e => onChange(e)} value={ipName}></input>
+                <div className="background">
+                    <div className="info">
+                        <div className="info-name">
+                            <div className="info-name-label">Tên người nhận</div>
+                            <input className="info-name-text" type="text" name="name-receiver" required onChange={e => onChange(e)} value={ipName}></input>
+                        </div>
+                        <div className="info-name">
+                            <div className="info-name-label">Số điện thoại người nhận</div>
+                            <input className="info-name-text" type="text" name="phone-receiver" required onChange={e => onChange(e)} value={ipPhone}></input>
+                        </div>
+                        <div className="info-name">
+                            <div className="info-name-label">Địa chỉ người nhận</div>
+                            <input className="info-name-text" type="text" name="address-receiver" required onChange={e => onChange(e)} value={ipAddress}></input>
+                        </div>
+                        <div className="info-name">
+                            <div className="info-name-label">Chú ý</div>
+                            <input className="info-name-text" type="text" name="note-receiver" required onChange={e => onChange(e)} value={ipNote}></input>
+                        </div>
+                        <Link to="/cart" onClick={() => back()}>
+                            <button className="btn-cancel">Quay lại</button>
+                        </Link>
+                        <button className="btn-oder">Đặt hàng</button>
                     </div>
-                    <br></br>
-                    <div className="info-name">
-                        <div className="info-name-label">Số điện thoại người nhận</div>
-                        <input className="info-name-text" type="text" name="phone-receiver" required onChange={e => onChange(e)} value={ipPhone}></input>
-                    </div>
-                    <br></br>
-                    <div className="info-name">
-                        <div className="info-name-label">Địa chỉ người nhận</div>
-                        <input className="info-name-text" type="text" name="address-receiver" required onChange={e => onChange(e)} value={ipAddress}></input>
-                    </div>
-                    <br></br>
-                    <div className="info-name">
-                        <div className="info-name-label">Chú ý</div>
-                        <input className="info-name-text" type="text" name="note-receiver" required onChange={e => onChange(e)} value={ipNote}></input>
-                    </div>
-                    <br></br>
-                    <Link to="/cart" onClick={() => back()}>
-                        <button className="btn-cancel">Quay lại</button>
-                    </Link>
-                    <button className="btn-oder">Đặt hàng</button>
                 </div>
             </form>
         </div>
