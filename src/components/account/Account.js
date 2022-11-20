@@ -52,9 +52,41 @@ function Account(props) {
                                 </div>
                             </div>
                         </div>
+                        
                     </div> :
                     window.location.href = "./login"
             }
+            <div className="booter">
+                <div className="booter-zoom">
+                    <img className="booter-img" src="https://www.leoasher.dev/static/media/bannerFooter.4b09af08.png" alt=""></img>
+                </div>
+                <div className="booter-petsla-khung">
+                    <div className="booter-petsla">
+                        <div className="booter-petsla-title">
+                            Về Petsla
+                        </div>
+                        <div className="booter-petsla-text">
+                            PetsLa ra đời với sứ mệnh Pets hóa thế giới loài người bằng cách mang đến cho cộng đồng những content thú vị, đáng yêu về pets.
+                        </div>
+                    </div>
+                    <div className="booter-petsla">
+
+                    </div>
+                    <div className="booter-petsla">
+                        <div className="booter-petsla-title">
+                            Follow Us
+                        </div>
+                        <div className="icon-khung">
+                            <div className="booter-petsla-icon">
+                                <i className="bi bi-facebook booter-petsla-icon-img" ></i>
+                            </div>
+                            <div className="booter-petsla-icon">
+                                <i class="bi bi-instagram booter-petsla-icon-img"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 

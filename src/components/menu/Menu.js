@@ -4,23 +4,23 @@ import { connect } from 'react-redux';
 import * as actions from './../../action/index'
 function Menu(props) {
     const navigate = useNavigate();
-    const [ipSearch,setIpSearch] = useState("")
-    function handleLogout(e){   
+    const [ipSearch, setIpSearch] = useState("")
+    function handleLogout(e) {
         sessionStorage.removeItem("token")
         sessionStorage.removeItem("sait")
         props.onDeleteToken()
         let tmp = false;
         props.onChangeStatus(tmp)
     }
-    function handleChange(e){
+    function handleChange(e) {
         setIpSearch(e.target.value)
     }
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault()
-        if(ipSearch === ""){
+        if (ipSearch === "") {
             navigate("/")
-        }else{
-            props.onSearch(ipSearch,props.task)
+        } else {
+            props.onSearch(ipSearch, props.task)
             navigate(`/?search=${ipSearch}`)
             // const search = searchParams.get('/search')
             // setSearchParams({'search':ipSearch})
@@ -60,8 +60,8 @@ function Menu(props) {
                                         <i className="bi bi-box-arrow-right"></i>
                                     </Link> :
                                         <Link to="login">
-                                             <i className="bi bi-box-arrow-in-left">
-                                           </i>
+                                            <i className="bi bi-box-arrow-in-left">
+                                            </i>
                                         </Link>
                                 }
                             </div>
@@ -80,11 +80,11 @@ function Menu(props) {
                         <div className="header_input-search">
                             <form method="GET" action="" onSubmit={e => handleSubmit(e)}>
                                 <div className="cover-input">
-                                        <input type="text" name="search" className="input" onChange={e => handleChange(e)}
-                                            placeholder="Everything here is better than your ex" value={ipSearch}/>
-                                        <button className="search-btn">
-                                            <i className="bi bi-search"></i>
-                                        </button>
+                                    <input type="text" name="search" className="input" onChange={e => handleChange(e)}
+                                        placeholder="Everything here is better than your ex" value={ipSearch} />
+                                    <button className="search-btn">
+                                        <i className="bi bi-search"></i>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -107,11 +107,11 @@ function Menu(props) {
                         <li className="nav-item">
                             <Link to="/#" className="nav-item-link" >title.shop</Link>
                         </li>
-                        <li className="nav-item">
+                        <li className="nav-item" >
                             <Link to="/cart" className="nav-item-link">title.cart</Link>
                         </li>
                         <li className="nav-item">
-                            <a href="/#" className="nav-item-link">title.contact</a>
+                            <Link to="/Toast" className="nav-item-link">title.contact</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/account" className="nav-item-link">title.account</Link>
@@ -137,9 +137,9 @@ const mapDispatchToProps = (dispatch, props) => {
         onDeleteToken: () => {
             dispatch(actions.deleteToken())
         },
-        onSearch: (data,list) => {
-            dispatch(actions.search(data,list))
+        onSearch: (data, list) => {
+            dispatch(actions.search(data, list))
         }
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Menu)
+export default connect(mapStateToProps, mapDispatchToProps)(Menu)

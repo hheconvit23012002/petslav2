@@ -32,7 +32,7 @@ function ProductDetailcpm(props) {
                         </div>
                         <div className="btn-wrap">
                             <button className="buy-in-cart-btn">Buy Now</button>
-                            <button className="add-in-cart-btn" onClick={e => handleAdd(e,item)}>Add to Cart</button>
+                            <button className="add-in-cart-btn" onClick={e => handleAdd(e,item)} >Add to Cart</button>
                         </div>
                         <div className="product-desc">
                             <h3 className="title-desc">Thông tin sản phẩm</h3>
