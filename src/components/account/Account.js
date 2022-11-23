@@ -19,11 +19,11 @@ function Account(props) {
                                 <div className="account-list">
                                     <div className="account-list-label"> DASHBOARD </div>
                                     <div className="account-list-text">
-                                        <i class="bi bi-person"></i> Profile </div>
+                                        <i className="bi bi-person"></i> Profile </div>
                                     <div className="account-list-text">
-                                        <i class="bi bi-bag"></i> Orders </div>
+                                        <i className="bi bi-bag"></i> Orders </div>
                                     <div className="account-list-text">
-                                        <i class="bi bi-heart"></i> Wishlist </div>
+                                        <i className="bi bi-heart"></i> Wishlist </div>
                                 </div>
                             </div>
                             <div className="account-info">
@@ -81,7 +81,7 @@ function Account(props) {
                                 <i className="bi bi-facebook booter-petsla-icon-img" ></i>
                             </div>
                             <div className="booter-petsla-icon">
-                                <i class="bi bi-instagram booter-petsla-icon-img"></i>
+                                <i className="bi bi-instagram booter-petsla-icon-img"></i>
                             </div>
                         </div>
                     </div>

@@ -53,11 +53,6 @@ const routes = [
         id:9,
         path:"HomePage",
         main: () => <HomePage/>
-    },
-    {
-        id:10,
-        path:"Toast",
-        main: () => <Toast/>
     }
 ]
 

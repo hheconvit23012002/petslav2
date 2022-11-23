@@ -1,6 +1,6 @@
 import React from "react"
 import "./toast.css"
-function Toast(props) {
+function Toast (props) {
         const {title,message,type,duration } = props;
         const main = document.getElementById('toast');
         if (main) {
@@ -42,5 +42,23 @@ function Toast(props) {
         </div>
     )
 }
-
-export default Toast
+export const successAddCart = () => {
+    return(
+        Toast({title: 'Thành công', message: 'Thêm giỏ hành thành công', type: 'success', duration: 3000})
+    )
+}
+export const successLogin = () => {
+    return(
+        Toast({title: 'Thành công', message: 'Đăng nhập thành công', type: 'success', duration: 3000})
+    )
+}
+export const successLogout = () => {
+    return(
+        Toast({title: 'Thành công', message: 'Đăng Xuất thành công', type: 'success', duration: 3000})
+    )
+}
+export const ErrorLogin = () => {
+    return(
+        Toast({title: 'lỗi', message: 'Đăng nhập không thành công', type: 'error', duration: 3000})
+    )
+}

@@ -2,15 +2,28 @@ import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './../../action/index'
+import * as toast from '../toast/toast'
 function Menu(props) {
+    const [check, setCheck] = useState(true)
     const navigate = useNavigate();
     const [ipSearch, setIpSearch] = useState("")
+    setTimeout(() => {
+        setCheck(() =>{
+            return true;
+        })
+    }, 100);
     function handleLogout(e) {
+        setCheck(() =>{
+            return true;
+        })
         sessionStorage.removeItem("token")
         sessionStorage.removeItem("sait")
         props.onDeleteToken()
         let tmp = false;
         props.onChangeStatus(tmp)
+        setCheck(() =>{
+            return false;
+        })
     }
     function handleChange(e) {
         setIpSearch(e.target.value)
@@ -28,6 +41,7 @@ function Menu(props) {
     }
     return (
         <div>
+            { check ?  null:toast.successLogout()  }
             <div className="cover-header-top" id="test">
                 <div className="grid wide">
                     <div className="header-top">
@@ -56,13 +70,15 @@ function Menu(props) {
                             </div>
                             <div className="setting-check-log">
                                 {
-                                    props.status ? <Link to="/#" onClick={(e) => handleLogout(e)}>
-                                        <i className="bi bi-box-arrow-right"></i>
-                                    </Link> :
-                                        <Link to="login">
-                                            <i className="bi bi-box-arrow-in-left">
-                                            </i>
+                                    props.status ? <div>
+                                        <Link to="/#" onClick={(e) => handleLogout(e)}>
+                                            <i className="bi bi-box-arrow-right"></i>
                                         </Link>
+                                    </div> :
+                                        <Link to="login">
+                                            <i className="bi bi-box-arrow-in-left"></i>
+                                        </Link>
+                                        
                                 }
                             </div>
                         </div>
@@ -111,7 +127,7 @@ function Menu(props) {
                             <Link to="/cart" className="nav-item-link">title.cart</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/Toast" className="nav-item-link">title.contact</Link>
+                            <Link to="/" className="nav-item-link">title.contact</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/account" className="nav-item-link">title.account</Link>
