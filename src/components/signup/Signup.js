@@ -12,6 +12,122 @@ function Signup() {
     const [ipPass, setIpPass] = useState("")
     const [isLoading, setLoading] = useState(false)
     const MySwal = withReactContent(Swal)
+    const form = document.getElementById('form');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+    const [checkError, setCheckError] = useState(false)
+    function showErrorText(element, mes) {
+        const inputValuedate = element.parentElement
+        const errorDisplay = inputValuedate.querySelector('.small')
+        errorDisplay.innerText = mes;
+    }
+    function removeErrorText(element) {
+        const inputValuedate = element.parentElement
+        const errorDisplay = inputValuedate.querySelector('.small')
+        errorDisplay.innerText = '';
+    }
+    if (form) {
+        let valueUsername = username.value;
+        let valuePassword = password.value;
+        let valuefirstName = firstName.value;
+        let valuelastName = lastName.value;
+        valueUsername = valueUsername.trim();
+        valuePassword = valuePassword.trim();
+        valuefirstName = valuefirstName.trim();
+        valuelastName = valuelastName.trim();
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            if (isErrorText(valueUsername)) {
+                showErrorText(username, "Bao gồm các ký tự chữ hoặc số");
+            } else {
+                setCheckError(() => {
+                    return false;
+                })
+                removeErrorText(username);
+                if (isErrorMinMax(valueUsername)) {
+                    showErrorText(username, "Cần tối thiểu 6 ký tự");
+                }
+                else {
+                    setCheckError(() => {
+                        return false;
+                    })
+                    removeErrorText(username);
+                }
+            }
+            if (isErrorText(valuePassword)) {
+                showErrorText(password, "Bao gồm các ký tự chữ hoặc số");
+            } else {
+                setCheckError(() => {
+                    return false;
+                })
+                removeErrorText(password);
+                if (isErrorMinMax(valuePassword)) {
+                    showErrorText(password, "Cần tối thiểu 6 ký tự");
+                }
+                else {
+                    setCheckError(() => {
+                        return false;
+                    })
+                    removeErrorText(password);
+                }
+            }
+            if (isErrorText(valuefirstName)) {
+                showErrorText(firstName, "Bao gồm các ký tự chữ hoặc số");
+            } else {
+                setCheckError(() => {
+                    return false;
+                })
+                removeErrorText(firstName);
+                if (isErrorMinMax(valuefirstName)) {
+                    showErrorText(firstName, "Cần tối thiểu 6 ký tự");
+                }
+                else {
+                    setCheckError(() => {
+                        return false;
+                    })
+                    removeErrorText(firstName);
+                }
+            }
+            if (isErrorText(valuelastName)) {
+                showErrorText(lastName, "Bao gồm các ký tự chữ hoặc số");
+            } else {
+                setCheckError(() => {
+                    return false;
+                })
+                removeErrorText(lastName);
+                if (isErrorMinMax(valuelastName)) {
+                    showErrorText(lastName, "Cần tối thiểu 6 ký tự");
+                }
+                else {
+                    setCheckError(() => {
+                        return false;
+                    })
+                    removeErrorText(lastName);
+                }
+            }
+        })
+    }
+    function isErrorMinMax(value) {
+        if (value.length < 6) {
+            setCheckError(() => {
+                return true;
+            })
+            return true;
+        }
+        return false;
+    }
+    function isErrorText(value) {
+        let regex = /^[a-zA-Z)-9]+$/;
+        if (!regex.test(value)) {
+            setCheckError(() => {
+                return true;
+            })
+            return true;
+        }
+        return false
+    }
     function handleSubmit(e) {
         e.preventDefault()
         if (ipFirstname === "" || ipLastName === "" || ipEmail === "" || ipUserName === "" || ipPass === "") {
@@ -22,34 +138,36 @@ function Signup() {
             })
         }
         else {
-            let res = {
-                first_name: ipFirstname,
-                last_name: ipLastName,
-                email: ipEmail,
-                username: ipUserName,
-                password: ipPass
+            if (!checkError) {
+                let res = {
+                    first_name: ipFirstname,
+                    last_name: ipLastName,
+                    email: ipEmail,
+                    username: ipUserName,
+                    password: ipPass
+                }
+                setLoading(true)
+                ApiCaller("/register/", 'POST', res).then(e => {
+                    setLoading(false)
+                    setIpFirstName("")
+                    setIpLasttName("")
+                    setIpPass("")
+                    setIpEmail("")
+                    setIpUserName("")
+                    MySwal.fire({
+                        title: <strong>Thành Công!</strong>,
+                        html: <i>You clicked the button!</i>,
+                        icon: 'success'
+                    })
+                }).catch(e => {
+                    setLoading(false)
+                    MySwal.fire({
+                        title: <strong>Lỗi không đăng ký được!</strong>,
+                        html: <i>You clicked the button!</i>,
+                        icon: 'error'
+                    })
+                })
             }
-            setLoading(true)
-            ApiCaller("/register/", 'POST', res).then(e => {
-                setLoading(false)
-                setIpFirstName("")
-                setIpLasttName("")
-                setIpPass("")
-                setIpEmail("")
-                setIpUserName("")
-                MySwal.fire({
-                    title: <strong>Thành Công!</strong>,
-                    html: <i>You clicked the button!</i>,
-                    icon: 'success'
-                })
-            }).catch(e => {
-                setLoading(false)
-                MySwal.fire({
-                    title: <strong>Lỗi không đăng ký được!</strong>,
-                    html: <i>You clicked the button!</i>,
-                    icon: 'error'
-                })
-            })
         }
     }
     function onChange(e) {
@@ -69,21 +187,31 @@ function Signup() {
     }
     return (
         <div>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form id='form' onSubmit={(e) => handleSubmit(e)}>
                 <div className="signup-background">
                     <div className="signup-khung">
                         <div className="sigup-lable">Đăng Ký</div>
                         <div className="signup-ip">
-                            <input type="text" className="firstNameSignup" placeholder="firstName" required value={ipFirstname} onChange={(e) => onChange(e)}></input>
-
-                            <input type="text" className="lastNameSignup" placeholder="lastName" required value={ipLastName} onChange={(e) => onChange(e)}></input>
-
-                            <input type="email" className="emailSignup" placeholder="email" required value={ipEmail} onChange={(e) => onChange(e)}></input>
-
-                            <input type="text" className="usernameSignup" placeholder="username" required value={ipUserName} onChange={(e) => onChange(e)}></input>
-
-                            <input type="password" className="passwordSignup" placeholder="password" required value={ipPass} onChange={(e) => onChange(e)}></input>
-
+                            <div id='error-sigup'>
+                                <input id='firstName' type="text" className="firstNameSignup" placeholder="firstName" required value={ipFirstname} onChange={(e) => onChange(e)}></input>
+                                <div id='small' className="small"></div>
+                            </div>
+                            <div id='error-sigup'>
+                                <input id='lastName' type="text" className="lastNameSignup" placeholder="lastName" required value={ipLastName} onChange={(e) => onChange(e)}></input>
+                                <div id='small' className="small"></div>
+                            </div>
+                            <div id='error-sigup'>
+                                <input id='email' type="email" className="emailSignup" placeholder="email" required value={ipEmail} onChange={(e) => onChange(e)}></input>
+                                <div id='small' className="small"></div>
+                            </div>
+                            <div id='error-sigup'>
+                                <input id='username' type="text" className="usernameSignup" placeholder="username" required value={ipUserName} onChange={(e) => onChange(e)}></input>
+                                <div id='small' className="small"></div>
+                            </div>
+                            <div id='error-sigup'>
+                                <input id='password' type="password" className="passwordSignup" placeholder="password" required value={ipPass} onChange={(e) => onChange(e)}></input>
+                                <div id='small' className="small"></div>
+                            </div>
                         </div>
                         {/* <button className="signup-sumbit">
                         <div className="signup-text">
@@ -91,19 +219,19 @@ function Signup() {
                          </div>
                     </button> */}
                         <div>
-                        <div className="sumbit">
-                            {isLoading ? <div className="spinner-container"  >
-                                <div className="loading-spinner">
-                                </div>
-                            </div> :
-                                <button className="sumbit-signup">
+                            <div className="sumbit">
+                                {isLoading ? <div className="spinner-container"  >
+                                    <div className="loading-spinner">
+                                    </div>
+                                </div> :
+                                    <button className="sumbit-signup">
                                         Đăng Ký
-                                </button>
-                            }
-                                <div class="separate-wrap">
-                                    <div class="separate-dash"></div>
-                                    <div class="separate-text">OR</div>
-                                    <div class="separate-dash"></div>
+                                    </button>
+                                }
+                                <div className="separate-wrap">
+                                    <div className="separate-dash"></div>
+                                    <div className="separate-text">OR</div>
+                                    <div className="separate-dash"></div>
                                 </div>
                                 <div className="submit-gg">Đăng nhập with Google </div>
                                 <div className="submit-fb">Đăng nhập with Facebook </div>

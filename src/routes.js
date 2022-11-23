@@ -7,6 +7,7 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import AccountPage from "./pages/AccountPage/AccountPage";
 import CartPage from "./pages/CartPage/CartPage";
 import HomePage from "./components/homePage/homePage";
+import Toast from "./components/toast/toast";
 const routes = [
     {
         id:1,

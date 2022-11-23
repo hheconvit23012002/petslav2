@@ -4,6 +4,7 @@ import './base.css';
 import Menu from "./components/menu/Menu";
 import { Route, Routes } from 'react-router-dom';
 import routes from "./routes";
+import HomePage from "./components/homePage/homePage";
 function App() {
     return (
         <div>

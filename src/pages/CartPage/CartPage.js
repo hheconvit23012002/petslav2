@@ -5,8 +5,9 @@ import { useState } from "react";
 import ReceiverInfo from "./../../components/receiver/ReceiverInfo"
 import { useEffect } from "react";
 import "./CartPage.css"
+
 function CartPage(){
-    
+    const [check, setCheck] = useState(false)
     const [pageCurrent,setPageCurrent] = useState(true)
     useEffect( () => {
         if(window.location.pathname === "/receiver-info"){
@@ -14,11 +15,7 @@ function CartPage(){
         }
     },[])
     function onChangePageCart(e,type){
-        if(type === false && sessionStorage.getItem("token")=== null){
             alert("đăng nhập đi")
-        }else{
-            setPageCurrent(type)
-        }
     }
     return (
         <div>
