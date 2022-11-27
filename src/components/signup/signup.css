@@ -87,3 +87,8 @@
 .link-login:hover{
     color: #488bf0;
 }
+.spinner-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

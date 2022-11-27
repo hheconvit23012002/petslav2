@@ -22,8 +22,6 @@ function ProductItem(props) {
         let resItem = props.task.find(x => {
             return "" + x.id === tmpID
         })
-        console.log(resItem)
-        console.log(check)
         props.onAddToCart(resItem)
         setCheck(() => {
             return false

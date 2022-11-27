@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { connect } from 'react-redux';
-import {  useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import * as actions from './../../action/index'
 import ProductItem from "./../productItem/ProductItem"
 function ProductList(props) {
     useEffect(() => {
-        if(props.task.length === 0){
+        if (props.task.length === 0) {
             props.onCallApiFetchData();
         }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
     let [searchParams,] = useSearchParams()
-    const [pageCurent,setPageCurent] = useState(1)
-    const [productOnPage,setProductOnPage] = useState(12)
+    const [pageCurent, setPageCurent] = useState(1)
+    const [productOnPage, setProductOnPage] = useState(12)
     let res = []
     let arrNumPage = []
     let listItem = props.task
-    if(searchParams.get('search') !== null){
+    if (searchParams.get('search') !== null) {
         listItem = props.search
     }
-    let numberPage = Math.ceil(listItem.length/productOnPage)
-    for(let i=1;i<=numberPage;i++){
+    let numberPage = Math.ceil(listItem.length / productOnPage)
+    for (let i = 1; i <= numberPage; i++) {
         arrNumPage.push(i)
     }
-    res = listItem.slice((pageCurent-1)*productOnPage,(pageCurent-1)*productOnPage + productOnPage)
+    res = listItem.slice((pageCurent - 1) * productOnPage, (pageCurent - 1) * productOnPage + productOnPage)
     const handleChangePage = (value) => {
         setPageCurent(value);
     }
@@ -30,8 +30,8 @@ function ProductList(props) {
         props.onSort(e.target.value)
     }
     const handleChangeProduct = (e) => {
-        setPageCurent(() => {return 1})
-        setProductOnPage(() => {return e.target.value})
+        setPageCurent(() => { return 1 })
+        setProductOnPage(() => { return e.target.value })
     }
     return (
         <div>
@@ -63,8 +63,8 @@ function ProductList(props) {
                             <div className="list">
                                 {
                                     arrNumPage.map(value => {
-                                        return(
-                                            <button className={pageCurent===value ? "page_currunt" : ""} key={value} id={value} onClick={() => handleChangePage(value)}>{value}</button>
+                                        return (
+                                            <button className={pageCurent === value ? "page_currunt" : ""} key={value} id={value} onClick={() => handleChangePage(value)}>{value}</button>
                                         )
                                     })
                                 }
@@ -158,7 +158,7 @@ const mapDispatchToProps = (dispatch, props) => {
         onCallApiFetchData: () => {
             dispatch(actions.callApiGetItem())
         },
-        onSort : (value) => {
+        onSort: (value) => {
             dispatch(actions.sortProduct(value))
         }
     }

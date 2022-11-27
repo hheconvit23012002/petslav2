@@ -42,7 +42,6 @@ function Login(props) {
                 })
                 removeErrorText(username);
                 if (isErrorMinMax(valueUsername)) {
-                    console.log(isErrorMinMax(valueUsername))
                     showErrorText(username, "Cần tối thiểu 6 ký tự");
                 }
                 else{

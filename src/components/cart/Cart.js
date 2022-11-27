@@ -98,7 +98,7 @@ function Cart(props) {
                                     <i className="bi bi-facebook booter-petsla-icon-img" ></i>
                                 </div>
                                 <div className="booter-petsla-icon">
-                                    <i class="bi bi-instagram booter-petsla-icon-img"></i>
+                                    <i className="bi bi-instagram booter-petsla-icon-img"></i>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@ function Cart(props) {
                                 <i className="bi bi-facebook booter-petsla-icon-img" ></i>
                             </div>
                             <div className="booter-petsla-icon">
-                                <i class="bi bi-instagram booter-petsla-icon-img"></i>
+                                <i className="bi bi-instagram booter-petsla-icon-img"></i>
                             </div>
                         </div>
                     </div>

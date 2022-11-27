@@ -12,7 +12,7 @@ function Signup() {
     const [ipPass, setIpPass] = useState("")
     const [isLoading, setLoading] = useState(false)
     const MySwal = withReactContent(Swal)
-    const form = document.getElementById('form');
+    const form = document.getElementById('form-1') ?? null;
     const username = document.getElementById('username');
     const password = document.getElementById('password');
     const firstName = document.getElementById('firstName');
@@ -80,15 +80,15 @@ function Signup() {
                     return false;
                 })
                 removeErrorText(firstName);
-                if (isErrorMinMax(valuefirstName)) {
-                    showErrorText(firstName, "Cần tối thiểu 6 ký tự");
-                }
-                else {
-                    setCheckError(() => {
-                        return false;
-                    })
-                    removeErrorText(firstName);
-                }
+                // if (isErrorMinMax(valuefirstName)) {
+                //     showErrorText(firstName, "Cần tối thiểu 6 ký tự");
+                // }
+                // else {
+                //     setCheckError(() => {
+                //         return false;
+                //     })
+                //     removeErrorText(firstName);
+                // }
             }
             if (isErrorText(valuelastName)) {
                 showErrorText(lastName, "Bao gồm các ký tự chữ hoặc số");
@@ -97,15 +97,15 @@ function Signup() {
                     return false;
                 })
                 removeErrorText(lastName);
-                if (isErrorMinMax(valuelastName)) {
-                    showErrorText(lastName, "Cần tối thiểu 6 ký tự");
-                }
-                else {
-                    setCheckError(() => {
-                        return false;
-                    })
-                    removeErrorText(lastName);
-                }
+                // if (isErrorMinMax(valuelastName)) {
+                //     showErrorText(lastName, "Cần tối thiểu 6 ký tự");
+                // }
+                // else {
+                //     setCheckError(() => {
+                //         return false;
+                //     })
+                //     removeErrorText(lastName);
+                // }
             }
         })
     }
@@ -119,7 +119,7 @@ function Signup() {
         return false;
     }
     function isErrorText(value) {
-        let regex = /^[a-zA-Z)-9]+$/;
+        let regex = /^[a-zA-Z0-9- ]+$/;
         if (!regex.test(value)) {
             setCheckError(() => {
                 return true;
@@ -134,7 +134,7 @@ function Signup() {
             MySwal.fire({
                 title: <strong>Vui lòng nhập hết các trường!</strong>,
                 html: <i>You clicked the button!</i>,
-                icon: 'error'
+                icon: 'error',
             })
         }
         else {
@@ -187,7 +187,7 @@ function Signup() {
     }
     return (
         <div>
-            <form id='form' onSubmit={(e) => handleSubmit(e)}>
+            <form id='form-1' onSubmit={(e) => handleSubmit(e)}>
                 <div className="signup-background">
                     <div className="signup-khung">
                         <div className="sigup-lable">Đăng Ký</div>
